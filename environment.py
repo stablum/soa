@@ -4,14 +4,6 @@ import copy
 # local imports
 import config
 
-e=(n ? curr)
-
-
-
-import random
-import copy
-
-
 config = {
     'frac_edges': 0.1,
     'frac_damage': 0.65,
@@ -20,14 +12,6 @@ config = {
 	'init_num_nodes': len(g.nodes)
 }
 
-
-#TODO: Policy_shortpath
-#TODO: Policy_prorich
-#TODO: Policy_propoor
-#TODO: Policy_proheavy
-#TODO: Policy_prolight
-#TODO: Policy_proweightrich
-#TODO: Policy_proweightpoor
 def environment():
     """ actions performed by the environment
         Alzeihmer desease:

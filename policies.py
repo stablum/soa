@@ -9,6 +9,14 @@ def simple(node):
     e = (node ? n).pop() # take the edge linking 'node' to 'n'
     return {e: node.budget}
 
+#TODO: Policy_shortpath
+#TODO: Policy_prorich
+#TODO: Policy_propoor
+#TODO: Policy_proheavy
+#TODO: Policy_prolight
+#TODO: Policy_proweightrich
+#TODO: Policy_proweightpoor
+
 def get(name):
     """
     returns the policy specified by the given name

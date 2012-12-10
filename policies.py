@@ -10,4 +10,7 @@ def simple(node):
     return {e: node.budget}
 
 def get(name):
-    #TODO FIXME
+    """
+    returns the policy specified by the given name
+    """
+    return globals()[name]

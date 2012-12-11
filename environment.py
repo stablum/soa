@@ -6,7 +6,7 @@ import math
 # local imports
 import config
 
-def environment():
+def compute():
     """ actions performed by the environment
         Alzeihmer desease:
         select randomly a certain percentage of edges. 
@@ -14,12 +14,12 @@ def environment():
         of a certain percentage
     """
     edges_copy = copy.copy(g.edges)
-    num_edges_selected = int(math.ceil(len(edges_copy) * config['frac_edges'] ))
+    num_edges_selected = int(math.ceil(len(edges_copy) * config.frac_edges ))
     selected=random.sample(g.edges,num_edges_selected)
     damaged = set()
     for e in selected: # each of these edges will be assigned a damage
         prev_weight = e.weight
-        e.weight = prev_weight * config['frac_damage']
+        e.weight = prev_weight * config.frac_damage
         diff = prev_weight - e.weight
         e.damage = diff # if the edge is too light, destroy it
         if e.weight < 1.0: #del e # FIXME!! careful!!!
@@ -38,31 +38,10 @@ def budgetize(damaged):
         e.source.budget = 0
         e.target.budget = 0
     for e in damaged: # a fraction of the edge's removed-weight becomes edges budget
-        budget = e.damage * config['factor_reuse']
+        budget = e.damage * config.factor_reuse
         e.source.budget += budget 
         e.target.budget += budget
-
 		
-def wakeup_nodes(damaged):
-    """
-    wakes up the affected nodes for action. this will call 'behaviour'
-    """
-    waking_nodes = set()
-    for e in damaged:
-	waking_nodes.add(e.source)
-	waking_nodes.add(e.target)
-    for node in waking_nodes:
-        node.behavior() # the action is defined there...!!FIXME!!at moment bheaviour is not a method for node
-
-
-def termination_condition():
-    for e in g.edges:
-	if len(g.nodes)<config['init_num_nodes']:
-		return True
-    return False
-
-def snapshot():
-    pass #TODO statistics, screenshot, indicators calculations...
 
 
 # TODO initialize custom fields

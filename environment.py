@@ -1,5 +1,7 @@
+# external libraries
 import random
 import copy
+import math
 
 # local imports
 import config
@@ -11,7 +13,6 @@ def environment():
         The weights of the edges will be reduced
         of a certain percentage
     """
-    import math
     edges_copy = copy.copy(g.edges)
     num_edges_selected = int(math.ceil(len(edges_copy) * config['frac_edges'] ))
     selected=random.sample(g.edges,num_edges_selected)

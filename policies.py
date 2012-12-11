@@ -17,6 +17,8 @@ def simple(node):
 #TODO: Policy_proweightrich
 #TODO: Policy_proweightpoor
 # a random modification from milombo
+# a random modification from stablum
+
 def get(name):
     """
     returns the policy specified by the given name

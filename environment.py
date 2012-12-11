@@ -55,7 +55,7 @@ def behaviour(self):
 	according to the node's budget. budget itself is a fraction 
 	of the damage inflicted to the nodes' edgess
     """
-    actions = policies[config['policy_id']](self)
+    actions = policies.get(config.policy_id)(self)
     apply_actions(self,actions)
 		
 def wakeup_nodes(damaged):
@@ -79,16 +79,6 @@ def termination_condition():
 def snapshot():
     pass #TODO statistics, screenshot, indicators calculations...
 
-def step(): # what happens in each cycle. Main calls happen here.
-    damaged = environment()
-    budgetize(damaged)
-    wakeup_nodes(damaged) # calls their behaviour, which calls the policy (what to do), and finally applies actions
-    snapshot()
-
-def cycle(): # the Highest function
-    while not termination_condition():
-	print termination_condition()
-	step()
 
 # TODO initialize custom fields
 

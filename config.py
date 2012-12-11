@@ -15,5 +15,5 @@ def set_g(__g):
     global init_num_nodes
     _g = __g
     print "config.g is now ",type(g)
-    init_num_nodes = len(g.nodes)
+    init_num_nodes = len(g().nodes)
 

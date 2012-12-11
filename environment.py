@@ -2,9 +2,11 @@
 import random
 import copy
 import math
+import gi
 
 # local imports
 import config
+from config import g
 
 def compute():
     """ actions performed by the environment
@@ -13,9 +15,9 @@ def compute():
         The weights of the edges will be reduced
         of a certain percentage
     """
-    edges_copy = copy.copy(config.g.edges)
+    edges_copy = copy.copy(gi.edges())
     num_edges_selected = int(math.ceil(len(edges_copy) * config.frac_edges ))
-    selected=random.sample(config.g.edges,num_edges_selected)
+    selected=random.sample(gi.edges(),num_edges_selected)
     damaged = set()
     for e in selected: # each of these edges will be assigned a damage
         prev_weight = e.weight

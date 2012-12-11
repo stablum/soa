@@ -1,3 +1,5 @@
+import random
+
 def simple(node):
     """
     chooses a random edge and returns the action that

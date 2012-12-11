@@ -1,4 +1,5 @@
 import policies
+import config
 
 def apply_actions(self,actions):
     for e,increase in actions.items():
@@ -7,7 +8,7 @@ def apply_actions(self,actions):
             raise Exception("programming error: budget can not be < 0.0")
         e.weight += increase
 
-def behaviour(self):
+def node_method(self):
     """
     behavior of the node agent:
     select one (or more?) of its edges to be reinforced,

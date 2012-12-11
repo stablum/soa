@@ -20,8 +20,8 @@ def step(): # what happens in each cycle. Main calls happen here.
     snapshot()
 
 def termination_condition():
-    for e in g.edges:
-	if len(g.nodes) < config.init_num_nodes:
+    for e in g().edges:
+	if len(g().nodes) < config.init_num_nodes:
 		return True
     return False
 

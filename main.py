@@ -1,4 +1,7 @@
 import environment
+import config
+
+g = None # workaround for visibility of 'g'
 
 def wakeup_nodes(damaged):
     """
@@ -18,15 +21,18 @@ def step(): # what happens in each cycle. Main calls happen here.
     snapshot()
 
 def termination_condition():
+    global g
     for e in g.edges:
-	if len(g.nodes)<config.init_num_nodes:
+	if len(g.nodes) < config.init_num_nodes:
 		return True
     return False
 
 def snapshot():
     pass #TODO statistics, screenshot, indicators calculations...
 
-def run(): # the Highest function
+def run(_g): # the Highest function
+    global g
+    g = _g
     while not termination_condition():
 	print termination_condition()
 	step()

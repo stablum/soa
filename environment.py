@@ -42,7 +42,5 @@ def budgetize(damaged):
         e.source.budget += budget 
         e.target.budget += budget
 		
-
-
 # TODO initialize custom fields
 

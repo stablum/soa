@@ -13,9 +13,9 @@ def compute():
         The weights of the edges will be reduced
         of a certain percentage
     """
-    edges_copy = copy.copy(g.edges)
+    edges_copy = copy.copy(config.g.edges)
     num_edges_selected = int(math.ceil(len(edges_copy) * config.frac_edges ))
-    selected=random.sample(g.edges,num_edges_selected)
+    selected=random.sample(config.g.edges,num_edges_selected)
     damaged = set()
     for e in selected: # each of these edges will be assigned a damage
         prev_weight = e.weight

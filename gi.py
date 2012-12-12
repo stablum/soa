@@ -53,4 +53,4 @@ def random_edges(how_many):
     """
     how_many = min(how_many,num_edges())
     ret=random.sample(gi.edges(),how_many)
-
+    return ret

@@ -18,7 +18,7 @@ def compute():
     print "environment.compute!"
     edges_copy = copy.copy(gi.edges())
     num_edges_selected = int(math.ceil(len(edges_copy) * config.frac_edges ))
-    selected=gi.random_edges()
+    selected=gi.random_edges(num_edge_selected)
     damaged = set()
     for e in selected: # each of these edges will be assigned a damage
         prev_weight = e.weight

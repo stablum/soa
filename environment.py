@@ -32,9 +32,9 @@ def compute():
 def budgetize(damaged):
     """
     generates budgets for the nodes involved in the damaged edges.
-	As some weight is removed, a part of this weight is given as a budget to the involved nodes.
-	This weight can then be applied to strengtehn other nodes' edges. (this is done by the 'behaviour' func)
-	the overall idea: some of the weight is lost, some is 'shifted' to other edges
+    As some weight is removed, a part of this weight is given as a budget to the involved nodes.
+    This weight can then be applied to strengtehn other nodes' edges. (this is done by the 'behaviour' func)
+    the overall idea: some of the weight is lost, some is 'shifted' to other edges
     """
     for e in damaged: # reset previous budgets. each cycle is a new story!
         e.source.budget = 0

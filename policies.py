@@ -4,8 +4,8 @@ def simple(node):
     """
     chooses a random edge and returns the action that
     represents an increase of its weight, according to the budget.
-	returns a request for increasing the weight of 
-	edge e in the amount of the total budget
+    returns a request for increasing the weight of 
+    edge e in the amount of the total budget
     """
     n = gi.random_neighbor(node) #hood
     e = (node ? n).pop() # take the edge linking 'node' to 'n'

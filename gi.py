@@ -15,6 +15,9 @@ def nodes():
 def edges():
     return list(g().edges)
 
+def num_edges():
+    return len(edges())
+    
 def neighbors(node):
     ret = []
     for n in node.neighbors:
@@ -27,3 +30,4 @@ def random_neighbor(node):
     tmp = neighbors(node)
     random.shuffle(tmp)
     return tmp[0]
+

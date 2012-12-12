@@ -4,6 +4,8 @@ import behaviour
 import gi
 from config import g
 
+count_steps = 0
+
 def wakeup_nodes(damaged):
     """
     wakes up the affected nodes for action. this will call 'behaviour'
@@ -18,6 +20,8 @@ def wakeup_nodes(damaged):
 
 def step(): # what happens in each cycle. Main calls happen here.
     print "main.step!"
+    global count_steps
+    count_steps += 1
     damaged = environment.compute()
     environment.budgetize(damaged)
     wakeup_nodes(damaged) # calls their behaviour, which calls the policy (what to do), and finally applies actions
@@ -25,9 +29,15 @@ def step(): # what happens in each cycle. Main calls happen here.
 
 def termination_condition():
     print "main.termination_condition!"
-    for e in gi.edges():
-        if len(gi.nodes()) < config.init_num_nodes:
-            return True
+    if gi.num_edges() <= 0:
+        return True
+    return False
+
+def termination_condition2():
+    global count_steps
+    print "main.termination_condition!"
+    if count_steps >= 2:
+        return True
     return False
 
 def snapshot():
@@ -50,4 +60,5 @@ def run(_g): # the Highest function
     while not termination_condition():
         print "termination condition:",termination_condition()
         step()
+        break
 

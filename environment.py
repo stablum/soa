@@ -18,7 +18,7 @@ def compute():
     print "environment.compute!"
     edges_copy = copy.copy(gi.edges())
     num_edges_selected = int(math.ceil(len(edges_copy) * config.frac_edges ))
-    selected=random.sample(gi.edges(),num_edges_selected)
+    selected=gi.random_edges()
     damaged = set()
     for e in selected: # each of these edges will be assigned a damage
         prev_weight = e.weight
@@ -41,6 +41,7 @@ def budgetize(damaged):
     for e in damaged: # reset previous budgets. each cycle is a new story!
         e.source.budget = 0
         e.target.budget = 0
+    
     for e in damaged: # a fraction of the edge's removed-weight becomes edges budget
         budget = e.damage * config.factor_reuse
         e.source.budget += budget 

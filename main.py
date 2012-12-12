@@ -22,6 +22,7 @@ def step(): # what happens in each cycle. Main calls happen here.
     print "main.step!"
     global count_steps
     count_steps += 1
+    print "count_steps "+str(count_steps)
     damaged = environment.compute()
     environment.budgetize(damaged)
     wakeup_nodes(damaged) # calls their behaviour, which calls the policy (what to do), and finally applies actions
@@ -36,7 +37,7 @@ def termination_condition():
 def termination_condition2():
     global count_steps
     print "main.termination_condition!"
-    if count_steps >= 2:
+    if count_steps >= config.max_steps:
         return True
     return False
 
@@ -60,5 +61,4 @@ def run(_g): # the Highest function
     while not termination_condition():
         print "termination condition:",termination_condition()
         step()
-        break
 

@@ -1,0 +1,30 @@
+___
+# you need to import the script main (the main cycle!), and run it.
+# From Gephi commanf line type:
+
+import sys
+#mypath="c:\\soa\\";
+mypath='D:\\ELECTIVES\\SELF_ORGA\\git_code_ad\\'
+sys.path.append(mypath);
+
+# make sure that you don't have added wrong paths.
+#if you did, pop them one by one like this, till only good path are in/
+# sys.path.pop() # then re-append the good one!
+
+
+import main
+main.run(g)
+
+# if it worked, you should see errors related to the code, rather than importing
+---
+# how to check current directory
+import os
+os.chdir(mypath)
+os.curdir
+
+----
+# SHARE YOUR EXPERIENCE WITH DEBUGGING, IMPORTING etc here;
+# WHICH BUG NEEDS TO BE FIXED? WHICH FUNCTION YOU WANT TO GET CORRECTED?
+
+milombo: i keep on seeing that the code from policy looks for node.neighborhood (inexisting field)
+even when I corrected and saved the code into node.neighbors. wtf?

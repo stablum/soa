@@ -1,0 +1,47 @@
+----
+GET STARTED: DO THIS FIRST!
+
+download GIT! http://git-scm.com/download/win
+
+subscribe to the website. top bar from https://github.com/
+
+when registered, open the ugly git bash (command prompt).
+type:
+$ git config --global user.email ''myname@mail.com''
+
+type:
+$ git config --global user.name ''myusername''
+
+now open the nice gui.
+get your copy: from the gui set origin the url: https://github.com/stablum/soa
+and to set the target, make in the gui a new directory in your pc
+
+then from the gui, RENAME YOUR BRANCH branch name into something different
+
+DO SOME ACTIONS
+---
+to push (you did something u want to share with us), use the gui:
+commit> rescan
+with the mouse, click on the files showing under unstaged changes
+
+commit> stage to commit
+the same files should go undr the green tab 'staged changes'
+
+click on commit button: add a message like ''random 1st change from myusername''
+
+click on push:
+you have shared your first contribution! congratulations!
+
+---
+to pull (you want to get other's work. and you want it fresh all the times!)
+
+git pull origin master
+
+if it crash, something is wrong with the dependencies between the online-master and your branch (personal editable copy) of the code.
+
+check for your random 1st change: you should be able to see it by now.
+
+---
+
+ share here your experience with git, stage, commit and push!
+

@@ -11,6 +11,7 @@ def g():
     return _g
 
 def set_g(__g):
+    print "config.set_g!"
     global _g
     global init_num_nodes
     _g = __g

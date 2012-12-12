@@ -15,6 +15,7 @@ def compute():
         The weights of the edges will be reduced
         of a certain percentage
     """
+    print "environment.compute!"
     edges_copy = copy.copy(gi.edges())
     num_edges_selected = int(math.ceil(len(edges_copy) * config.frac_edges ))
     selected=random.sample(gi.edges(),num_edges_selected)
@@ -36,6 +37,7 @@ def budgetize(damaged):
     This weight can then be applied to strengtehn other nodes' edges. (this is done by the 'behaviour' func)
     the overall idea: some of the weight is lost, some is 'shifted' to other edges
     """
+    print "environment.budgetize!"
     for e in damaged: # reset previous budgets. each cycle is a new story!
         e.source.budget = 0
         e.target.budget = 0

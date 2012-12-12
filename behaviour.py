@@ -12,9 +12,10 @@ def node_method(self):
     """
     behavior of the node agent:
     select one (or more?) of its edges to be reinforced,
-	according to the node's budget. budget itself is a fraction 
-	of the damage inflicted to the nodes' edgess
+    according to the node's budget. budget itself is a fraction 
+    of the damage inflicted to the nodes' edgess
     """
     actions = policies.get(config.policy_id)(self)
     apply_actions(self,actions)
 
+    

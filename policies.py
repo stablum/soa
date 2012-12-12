@@ -1,4 +1,4 @@
-import random
+import gi
 
 def simple(node):
     """
@@ -7,7 +7,7 @@ def simple(node):
 	returns a request for increasing the weight of 
 	edge e in the amount of the total budget
     """
-    n = random.shuffle(node.neighbors)[0] #hood
+    n = gi.random_neighbor(node) #hood
     e = (node ? n).pop() # take the edge linking 'node' to 'n'
     return {e: node.budget}
 

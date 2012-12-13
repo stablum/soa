@@ -23,8 +23,8 @@ def edges():
             for e 
             in g().edges 
             if e is not None 
-            and 'source' in dir(e) 
-            and 'target' in dir(e)
+            and hasattr(e,'source')
+            and hasattr(e,'target')
     ]
 
 def num_edges():

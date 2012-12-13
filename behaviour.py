@@ -15,8 +15,6 @@ def node_method(self):
     according to the node's budget. budget itself is a fraction 
     of the damage inflicted to the nodes' edgess
     """
-    print "behaviour.node_method!"
     actions = policies.get(config.policy_id)(self)
     apply_actions(self,actions)
 
-    

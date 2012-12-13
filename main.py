@@ -6,16 +6,12 @@ from config import g
 
 count_steps = 0
 
-def wakeup_nodes(damaged):
+def wakeup_nodes(nodes):
     """
     wakes up the affected nodes for action. this will call 'behaviour'
     """
     print "main.wakeup_nodes!"
-    waking_nodes = set()
-    for e in damaged:
-        waking_nodes.add(e.source)
-        waking_nodes.add(e.target)
-    for node in waking_nodes:
+    for node in nodes:
         behaviour.node_method(node) # the action is defined there...
 
 def step(): # what happens in each cycle. Main calls happen here.
@@ -23,9 +19,8 @@ def step(): # what happens in each cycle. Main calls happen here.
     global count_steps
     count_steps += 1
     print "count_steps "+str(count_steps)
-    damaged = environment.compute()
-    environment.budgetize(damaged)
-    wakeup_nodes(damaged) # calls their behaviour, which calls the policy (what to do), and finally applies actions
+    nodes = environment.step()
+    wakeup_nodes(nodes) # calls their behaviour, which calls the policy (what to do), and finally applies actions
     snapshot()
 
 def termination_condition3():

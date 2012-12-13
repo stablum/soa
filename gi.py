@@ -60,3 +60,7 @@ def random_edges(how_many):
     ret=random.sample(edges(),how_many)
     return ret
 
+def kill_edge(e):
+    g().underlyingGraph.readUnlockAll()
+    del e
+

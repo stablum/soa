@@ -26,7 +26,7 @@ def compute():
         e.damage = diff # if the edge is too light, destroy it
         if e.weight < 1.0: #del e # FIXME!! careful!!!
 		    print e
-    damaged.add(e)
+        damaged.add(e)
     return damaged
 
 def budgetize(damaged):

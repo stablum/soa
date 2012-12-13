@@ -28,13 +28,13 @@ def step(): # what happens in each cycle. Main calls happen here.
     wakeup_nodes(damaged) # calls their behaviour, which calls the policy (what to do), and finally applies actions
     snapshot()
 
-def termination_condition():
+def termination_condition3():
     print "main.termination_condition!"
     if gi.num_edges() <= 0:
         return True
     return False
 
-def termination_condition2():
+def termination_condition():
     global count_steps
     print "main.termination_condition!"
     if count_steps >= config.max_steps:

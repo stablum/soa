@@ -28,13 +28,13 @@ def step(): # what happens in each cycle. Main calls happen here.
     wakeup_nodes(damaged) # calls their behaviour, which calls the policy (what to do), and finally applies actions
     snapshot()
 
-def termination_condition():
+def termination_condition3():
     print "main.termination_condition!"
     if gi.num_edges() <= 0:
         return True
     return False
 
-def termination_condition2():
+def termination_condition():
     global count_steps
     print "main.termination_condition!"
     if count_steps >= config.max_steps:
@@ -48,6 +48,8 @@ def initialize():
     """
     initialization procedures. For example: attaching methods to nodes.
     """
+    global count_steps
+    count_steps = 0
     print "main.initialize!"
     for node in gi.nodes():
         if node is not None:
@@ -57,7 +59,8 @@ def run(_g): # the Highest function
     print "main.run!"
     config.set_g(_g)
     initialize()
-    while not termination_condition2():
-        print "termination condition:",termination_condition2()
+    while not termination_condition():
+        print "!!" + str(count_steps)
+        print "termination condition:",termination_condition()
         step()
 

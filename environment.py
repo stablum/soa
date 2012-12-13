@@ -41,7 +41,6 @@ def budgetize(damaged):
     """
     print "environment.budgetize!"
     for e in damaged: # reset previous budgets. each cycle is a new story!
-        print "source in dir(e) "+str('source' in dir(e))
         e.source.budget = 0
         e.target.budget = 0
     

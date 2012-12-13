@@ -19,15 +19,18 @@ def compute():
     num_edges_selected = int(math.ceil(gi.num_edges() * config.frac_edges ))
     selected=gi.random_edges(num_edges_selected)
     damaged = set()
+    thisdamage=[]
     for e in selected: # each of these edges will be assigned a damage
         prev_weight = e.weight
         e.weight = prev_weight * config.frac_damage
         diff = prev_weight - e.weight
         e.damage = diff # if the edge is too light, destroy it
+        thisdamage.append([e.weight, e.damage])
         if e.weight < 1.0: #del e # FIXME!! careful!!!
-		    print e
-    damaged.add(e)
+            pass
+        damaged.add(e)
     return damaged
+    print str(thisdamage)
 
 def budgetize(damaged):
     """

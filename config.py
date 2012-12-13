@@ -3,7 +3,7 @@ frac_damage = 0.65
 factor_reuse = 0.25
 policy_id = 'simple'
 init_num_nodes = 0 # set by set_g
-max_steps = 10
+max_steps = 100
 _g = None
 
 def g():

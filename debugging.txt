@@ -4,7 +4,8 @@ ___
 
 import sys
 #mypath="c:\\soa\\";
-mypath='D:\\ELECTIVES\\SELF_ORGA\\git_code_ad\\'
+mypath='D:\\ELECTIVES\\SELF_ORGA\\new_code\\'
+sys.modules.clear();
 sys.path.append(mypath);
 
 # make sure that you don't have added wrong paths.

@@ -16,9 +16,8 @@ def compute():
         of a certain percentage
     """
     print "environment.compute!"
-    edges_copy = copy.copy(gi.edges())
-    num_edges_selected = int(math.ceil(len(edges_copy) * config.frac_edges ))
-    selected=gi.random_edges(num_edge_selected)
+    num_edges_selected = int(math.ceil(gi.num_edges() * config.frac_edges ))
+    selected=gi.random_edges(num_edges_selected)
     damaged = set()
     for e in selected: # each of these edges will be assigned a damage
         prev_weight = e.weight
@@ -39,6 +38,7 @@ def budgetize(damaged):
     """
     print "environment.budgetize!"
     for e in damaged: # reset previous budgets. each cycle is a new story!
+        print "source in dir(e) "+str('source' in dir(e))
         e.source.budget = 0
         e.target.budget = 0
     

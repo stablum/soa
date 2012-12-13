@@ -19,7 +19,13 @@ def edges():
     """
     returns the graph's edges
     """
-    return [ e for e in g().edges if e is not None ]
+    return [ e 
+            for e 
+            in g().edges 
+            if e is not None 
+            and 'source' in dir(e) 
+            and 'target' in dir(e)
+    ]
 
 def num_edges():
     """
@@ -52,5 +58,6 @@ def random_edges(how_many):
     returns some edges, randomly selected
     """
     how_many = min(how_many,num_edges())
-    ret=random.sample(gi.edges(),how_many)
+    ret=random.sample(edges(),how_many)
     return ret
+

@@ -18,8 +18,6 @@ def simple(node):
 #TODO: Policy_prolight
 #TODO: Policy_proweightrich
 #TODO: Policy_proweightpoor
-# a random modification from milombo
-# a random modification from stablum
 
 def get(name):
     """

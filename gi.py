@@ -39,7 +39,6 @@ def neighbors(node):
     """
     ret = []
     for n in node.neighbors:
-        print "neighbor:"+str(n)
         if n is not None:
             ret.append(n)
     return ret

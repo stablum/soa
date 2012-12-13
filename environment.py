@@ -25,7 +25,7 @@ def compute():
         diff = prev_weight - e.weight
         e.damage = diff # if the edge is too light, destroy it
         if e.weight < 1.0: #del e # FIXME!! careful!!!
-		    print e
+		    print "e.weight < 1.0 !"+str(e)
         damaged.add(e)
     return damaged
 

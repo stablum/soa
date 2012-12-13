@@ -48,9 +48,10 @@ def initialize():
     """
     initialization procedures. For example: attaching methods to nodes.
     """
+    global count_steps
+    count_steps = 0
     print "main.initialize!"
     for node in gi.nodes():
-        print node
         if node is not None:
             setattr(node, "weight", 1.0)
 
@@ -59,6 +60,7 @@ def run(_g): # the Highest function
     config.set_g(_g)
     initialize()
     while not termination_condition():
+        print "!!" + str(count_steps)
         print "termination condition:",termination_condition()
         step()
 

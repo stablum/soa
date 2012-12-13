@@ -53,7 +53,7 @@ def budgetize(damaged):
 		
 # TODO initialize custom fields
 def kill_edges(damaged):
-    for e in gi.edges():
+    for e in gi.alive_edges():
         if e.weight < config.treshold_kill: #del e # FIXME!! careful!!!
             gi.kill_edge(e)
 
@@ -63,3 +63,4 @@ def step():
     budgetize(damaged)
     kill_edges(damaged)
     return nodes
+

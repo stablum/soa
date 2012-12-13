@@ -27,6 +27,12 @@ def edges():
             and hasattr(e,'target')
     ]
 
+def alive_edges():
+    """
+    return a list of edges that have not been killed
+    """
+    return [ e for e in edges() if e.weight != 0 ]
+
 def num_edges():
     """
     returns the how many edges are there
@@ -52,15 +58,22 @@ def random_neighbor(node):
     random.shuffle(tmp)
     return tmp[0]
 
-def random_edges(how_many):
+def random_edges(how_many,only_alive=False): # FIXME: more elegant than parametrized?? Boh!
     """ 
     returns some edges, randomly selected
     """
     how_many = min(how_many,num_edges())
-    ret=random.sample(edges(),how_many)
+
+    pool = None
+    if only_alive:
+        pool = alive_edges()
+    else:
+        pool = edges()
+
+    ret=random.sample(pool,how_many)
     return ret
 
 def kill_edge(e):
     g().underlyingGraph.readUnlockAll()
-    del e
+    e.weight = 0.0
 

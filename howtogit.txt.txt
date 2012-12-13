@@ -45,3 +45,9 @@ check for your random 1st change: you should be able to see it by now.
 
  share here your experience with git, stage, commit and push!
 
+-----
+to write when committing,  'mymessage' esc:wq
+-----
+when merge conflict happens, open the code, look for series of minors or majors symbols like >>>>>>>>, and the --------.
+choose if you want to keep the HEAD (online version) or the part after the ----- which is your version. then delete the chosen par and save.
+commit. then pull.

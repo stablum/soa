@@ -8,7 +8,7 @@ import gi
 import config
 from config import g
 
-def compute():
+def compute_edges():
     """ actions performed by the environment
         Alzeihmer desease:
         select randomly a certain percentage of edges. 
@@ -32,6 +32,13 @@ def compute():
     return damaged
     print str(thisdamage)
 
+def affected_nodes(damaged):
+    waking_nodes = set()
+    for e in damaged:
+        waking_nodes.add(e.source)
+        waking_nodes.add(e.target)
+    return waking_nodes
+
 def budgetize(damaged):
     """
     generates budgets for the nodes involved in the damaged edges.
@@ -50,4 +57,15 @@ def budgetize(damaged):
         e.target.budget += budget
 		
 # TODO initialize custom fields
+def kill_edges(damaged):
+    for e in gi.alive_edges():
+        if e.weight < config.treshold_kill: #del e # FIXME!! careful!!!
+            gi.kill_edge(e)
+
+def step():
+    damaged = compute_edges()
+    nodes = affected_nodes(damaged)
+    budgetize(damaged)
+    kill_edges(damaged)
+    return nodes
 

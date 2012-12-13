@@ -4,6 +4,7 @@ factor_reuse = 0.25
 policy_id = 'simple'
 init_num_nodes = 0 # set by set_g
 max_steps = 100
+treshold_kill = 0.2
 _g = None
 
 def g():

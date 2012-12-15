@@ -27,5 +27,48 @@ os.curdir
 # SHARE YOUR EXPERIENCE WITH DEBUGGING, IMPORTING etc here;
 # WHICH BUG NEEDS TO BE FIXED? WHICH FUNCTION YOU WANT TO GET CORRECTED?
 
+----
+
+TODO: now the changes to the weight works. But the changes are not displayed on the graph view.
+we need to fix this. Here are two functions we need to explore.
+http://gephi.org/docs/toolkit/org/gephi/graph/api/GraphView.html
+
+setVisibleView
+void setVisibleView(GraphView view)
+    Sets the current visible view and nofity listeners the visible view changed.
+    Parameters:
+        view - the view that is to be set as the visible view
+
+getVisibleView
+GraphView getVisibleView()
+    Returns the current viisble view. By default, returns the main view.
+    Returns:
+        the current visible view
+
+---
+# interfaces that we are hoping to use
+http://nexus.gephi.org/nexus/content/repositories/public/external/apidocs/org/gephi/graph/api/class-use/GraphView.html
+http://nexus.gephi.org/nexus/content/repositories/public/external/apidocs/org/gephi/graph/api/GraphModel.html
+http://nexus.gephi.org/nexus/content/repositories/public/external/apidocs/org/gephi/graph/api/GraphView.html
++++
+# we want the toolkit to be installed: http://gephi.org/toolkit/
+# toolkit info can be found here: http://wiki.gephi.org/index.php/Toolkit_porta
+# there is no installation info around the whole web.
+# we can either build it from the gephi source code, or download it in the same page
+# it contains a java library which, browsed with netbeans, contains our final goal--->> the org.gephi.graph.api
+# we should simply be able to use it as a normal .jar
+# ok, so 'simply' HOW???!!???
+
+#trying to use the toolkit library.
+#added it as a copy-paste at mytoolpath
+
+mytoolpath=' C:\Users\MangustaMegaMastar\AppData\Roaming\.gephi\0.8.1\dev\scripts'
+sys.path.append(mytoolpath)
+
+-----
+SOLVED BUGS: when some complaints is solved, move it down here
+ we reached a point where the code iteratively reduces weights according to polici simple.
+ no crashes. 
+
 milombo: i keep on seeing that the code from policy looks for node.neighborhood (inexisting field)
 even when I corrected and saved the code into node.neighbors. wtf?

@@ -1,6 +1,5 @@
 # external libraries
 import random
-import copy
 import math
 import gi
 

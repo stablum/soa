@@ -25,12 +25,13 @@ def compute_edges():
         e.weight = prev_weight * config.frac_damage
         diff = prev_weight - e.weight
         e.damage = diff # if the edge is too light, destroy it
-        thisdamage.append([e.weight, e.damage])
+        thisdamage.append((e.source, e.target, e.damage))
         if e.weight < 1.0: #del e # FIXME!! careful!!!
             pass
         damaged.add(e)
-    return damaged
     print str(thisdamage)
+    return damaged
+
 
 def affected_nodes(damaged):
     waking_nodes = set()

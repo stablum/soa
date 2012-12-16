@@ -77,3 +77,20 @@ def kill_edge(e):
     g().underlyingGraph.readUnlockAll()
     e.weight = 0.0
 
+def add_weight(e,increase):
+    set_weight(e,get_weight(e) + increase)
+
+def set_weight(e,weight):
+    e.getEdge().getEdgeData().setWeight(weight)
+
+def get_weight(e):
+    return e.weight
+
+def mult_weight(e, factor):
+    set_weight(e, get_weight(e) * factor)
+    
+def get_edge(n1,n2):
+    e = (n1 ? n2).pop() # take the edge linking 'node' to 'n'
+    if e is None:
+        raise Exception("gi.get_edge("+str(n1)+","+str(n2)+") did not find the edge")
+    return e

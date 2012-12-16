@@ -8,7 +8,7 @@ def simple(node):
     edge e in the amount of the total budget
     """
     n = gi.random_neighbor(node) #hood
-    e = (node ? n).pop() # take the edge linking 'node' to 'n'
+    e = gi.get_edge(n,node)
     return {e: node.budget}
 
 #TODO: Policy_shortpath

@@ -20,12 +20,12 @@ def compute_edges():
     damaged = set()
     thisdamage=[]
     for e in selected: # each of these edges will be assigned a damage
-        prev_weight = e.weight
-        e.weight = prev_weight * config.frac_damage
+        prev_weight = gi.get_weight(e)
+        gi.mult_weight(e, config.frac_damage)
         diff = prev_weight - e.weight
         e.damage = diff # if the edge is too light, destroy it
         thisdamage.append((e.source, e.target, e.damage))
-        if e.weight < 1.0: #del e # FIXME!! careful!!!
+        if gi.get_weight(e) < 1.0: #del e # FIXME!! careful!!!
             pass
         damaged.add(e)
     print str(thisdamage)
@@ -37,6 +37,8 @@ def affected_nodes(damaged):
     for e in damaged:
         waking_nodes.add(e.source)
         waking_nodes.add(e.target)
+    if None in waking_nodes:
+        waking_nodes.remove(None)
     return waking_nodes
 
 def budgetize(damaged):

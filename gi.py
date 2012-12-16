@@ -56,7 +56,13 @@ def random_neighbor(node):
     """
     tmp = neighbors(node)
     random.shuffle(tmp)
-    return tmp[0]
+
+    for n2 in tmp:
+        # checking that an edge is actually there
+        if has_edge(n2,node):
+            return n2
+
+    raise Exception("no neighbor found!")
 
 def random_edges(how_many,only_alive=False): # FIXME: more elegant than parametrized?? Boh!
     """ 
@@ -74,8 +80,9 @@ def random_edges(how_many,only_alive=False): # FIXME: more elegant than parametr
     return ret
 
 def kill_edge(e):
+    print "killing edge "+str(e)+" -- "+str(e.getEdge())
     g().underlyingGraph.readUnlockAll()
-    e.weight = 0.0
+    set_weight(e, 0.0)
 
 def add_weight(e,increase):
     set_weight(e,get_weight(e) + increase)
@@ -88,9 +95,14 @@ def get_weight(e):
 
 def mult_weight(e, factor):
     set_weight(e, get_weight(e) * factor)
-    
+ 
+def has_edge(n1,n2):
+    e = (n1 ? n2).pop() # take the edge linking 'node' to 'n'
+    return False if e is None else True
+
 def get_edge(n1,n2):
     e = (n1 ? n2).pop() # take the edge linking 'node' to 'n'
     if e is None:
         raise Exception("gi.get_edge("+str(n1)+","+str(n2)+") did not find the edge")
     return e
+

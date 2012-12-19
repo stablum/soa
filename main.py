@@ -50,9 +50,10 @@ def initialize():
         if node is not None:
             setattr(node, "weight", 1.0)
 
-def run(_g): # the Highest function
+def run(gephi_stuff): # the Highest function
     print "main.run!"
-    config.set_g(_g)
+    config.set_g(gephi_stuff['g'])
+    config.set_gephi(gephi_stuff)
     initialize()
     while not termination_condition():
         print "!!" + str(count_steps)

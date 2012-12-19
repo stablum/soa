@@ -15,6 +15,13 @@ def nodes():
              if node is not None 
     ]
 
+def random_node_i():
+    return random.randint(0,len(nodes()) - 1)
+
+def random_node():
+    i = random_node_i()
+    return nodes()[i]
+
 def edges():
     """
     returns the graph's edges
@@ -38,6 +45,9 @@ def num_edges():
     returns the how many edges are there
     """
     return len(edges())
+
+def num_nodes():
+    return len(nodes())
     
 def neighbors(node):
     """
@@ -105,4 +115,19 @@ def get_edge(n1,n2):
     if e is None:
         raise Exception("gi.get_edge("+str(n1)+","+str(n2)+") did not find the edge")
     return e
+
+def node_edges(n1):
+    ret = []
+    for n2 in neighbors(n1):
+        if has_edge(n1,n2):
+            ret.append(get_edge(n1,n2))
+    return ret
+
+def weighted_degree(node):
+    weights = [ get_weight(e) for e in node_edges(node) ]
+    ret = sum(weights)
+    return ret
+
+def degree(node):
+    return node.degree
 

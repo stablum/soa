@@ -1,0 +1,55 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# note: this is a simple example. a real jython script should handle args,
+# exceptions..
+
+__author__="Julian Bilcke"
+__date__ ="$Aug 4, 2010 12:20:31 AM$"
+
+# all the major API are exposed under the "gephi" module
+# plus the major Controller (more to come soon, see the gephi..py module!)
+from gephi import ProjectController
+
+pc = ProjectController()
+
+print "creating a new project.."
+pc.newProject()
+
+print "getting current workspace"
+workspace = pc.getCurrentWorkspace()
+print "workspace:",dir(workspace)
+
+
+
+##### trials to import gephi toolbox
+import sys
+from org.openide.util import Lookup
+import java.lang.Class
+import org.gephi.project.api.ProjectController as ProjectController
+pc = Lookup.getDefault().lookup(java.lang.Class.forName("org.gephi.project.api.ProjectController"))
+print(pc)
+
+##
+import sys
+toolpath='C:\\Users\MangustaMegaMastar\\Downloads\\4gephi\\gephi-toolkit-0.8.5-all\\gephi-toolkit-0.8.1-all\\gephi-toolkit-demos\\lib\\gephi-toolkit.jar'
+sys.path.append(toolpath)
+#sys.path.append('gephi-toolkit.jar')
+from org.openide.util import Lookup
+import org.gephi.project.api.ProjectController as ProjectController
+pc = Lookup.getDefault().lookup(ProjectController)
+workspace = pc.newProject()
+print "done."
+
+##
+import sys
+from org.openide.util import Lookup
+import java.lang.Class
+import org.gephi.project.api.ProjectController as ProjectController
+pc = Lookup.getDefault().lookup(java.lang.Class.forName("org.gephi.project.api.ProjectController"))
+print(pc)
+#
+#set CLASSPATH=%CLASSPATH%;C:\java\gephi-toolkit-0.7.2014-all\gephi-toolkit.jar
+#set CLASSPATH= %CLASSPATH%;C:\\Users\\MangustaMegaMastar\\Downloads\\4gephi\\gephi-toolkit-0.8.5-all\\gephi-toolkit-0.8.1-all\\gephi-toolkit-demos\\lib\\gephi-toolkit.jar
+set CLASSPATH=%CLASSPATH%;C:\Users\MangustaMegaMastar\Downloads\4gephi\gephi-toolkit-0.8.5-all\gephi-toolkit-0.8.1-all\gephi-toolkit-demos\lib\gephi-toolkit.jar
+jython.bat gephi_test.jy

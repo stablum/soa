@@ -90,7 +90,6 @@ def random_edges(how_many,only_alive=False): # FIXME: more elegant than parametr
     return ret
 
 def kill_edge(e):
-    print "killing edge "+str(e)+" -- "+str(e.getEdge())
     g().underlyingGraph.readUnlockAll()
     set_weight(e, 0.0)
 

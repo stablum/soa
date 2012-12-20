@@ -1,11 +1,12 @@
 # external libraries
 import random
 import math
-import gi
 
 # local imports
+import gi
 import config
 from config import g
+import stats
 
 def compute_edges():
     """ actions performed by the environment
@@ -14,7 +15,6 @@ def compute_edges():
         The weights of the edges will be reduced
         of a certain percentage
     """
-    print "environment.compute!"
     num_edges_selected = int(math.ceil(gi.num_edges() * config.frac_edges ))
     selected=gi.random_edges(num_edges_selected)
     damaged = set()
@@ -28,9 +28,7 @@ def compute_edges():
         if gi.get_weight(e) < 1.0: #del e # FIXME!! careful!!!
             pass
         damaged.add(e)
-    print str(thisdamage)
     return damaged
-
 
 def affected_nodes(damaged):
     waking_nodes = set()
@@ -48,7 +46,6 @@ def budgetize(damaged):
     This weight can then be applied to strengtehn other nodes' edges. (this is done by the 'behaviour' func)
     the overall idea: some of the weight is lost, some is 'shifted' to other edges
     """
-    print "environment.budgetize!"
     for e in damaged: # reset previous budgets. each cycle is a new story!
         e.source.budget = 0
         e.target.budget = 0
@@ -57,12 +54,13 @@ def budgetize(damaged):
         budget = e.damage * config.factor_reuse
         e.source.budget += budget 
         e.target.budget += budget
-		
+
 # TODO initialize custom fields
 def kill_edges(damaged):
     for e in gi.alive_edges():
         if e.weight < config.treshold_kill: #del e # FIXME!! careful!!!
             gi.kill_edge(e)
+            stats.collector.num_kills += 1
 
 def step():
     damaged = compute_edges()

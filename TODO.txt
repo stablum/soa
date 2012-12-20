@@ -1,0 +1,4 @@
+X pull
+- test the code (needs to run correctly)
+  - behaviour.py line 9: NoneType has no attribute weight
+

@@ -2,11 +2,12 @@ import gi
 
 def pro_rich(node):
     pool = []
-    for n in gi.neighbors(node):
-        pool.append((gi.weighted_degree(node),node))
-    n2[1] = sorted(pool, key=lambda x: x[0])[-1]
+    for curr in gi.neighbors(node):
+        pool.append((gi.weighted_degree(curr),curr))
+    wd,n2 = sorted(pool, key=lambda x: x[0])[-1]
     e = gi.get_edge(n2,node)
-    return {e: gi.get_weight(e)*0.25}
+    w = gi.get_weight(e)
+    return {e: w*0.25}
 
 def simple(node):
     """
@@ -32,4 +33,5 @@ def get(name):
     returns the policy specified by the given name
     """
     return globals()[name]
+    print x
 

@@ -1,6 +1,8 @@
 ___
+BASICS:
+
 # you need to import the script main (the main cycle!), and run it.
-# From Gephi commanf line type:
+# From Gephi command line type:
 
 import sys
 #mypath="c:\\soa\\";
@@ -51,6 +53,16 @@ http://nexus.gephi.org/nexus/content/repositories/public/external/apidocs/org/ge
 http://nexus.gephi.org/nexus/content/repositories/public/external/apidocs/org/gephi/graph/api/GraphModel.html
 http://nexus.gephi.org/nexus/content/repositories/public/external/apidocs/org/gephi/graph/api/GraphView.html
 +++
+what we are using now is the console in gephi, with  python language
+https://gephi.org/2012/python-scripting-console-for-gephi/ 
+http://wiki.gephi.org/index.php/Scripting_Plugin
+
+instead of netbeans working with jython. ( the standard Gephi recommended choice for developing). When all policies are generated and statistics computed, we could think to move to the other system to access unreachable libraries for visuals and perhaps stats..
+Also, it seems another independent editor different than netbeans do not work, because of 'the plumbing that netbeans does automatically for you'. 
+Hopefully we'll not get too many differences shifting there(...)
+
+
+----
 # we want the toolkit to be installed: http://gephi.org/toolkit/
 # toolkit info can be found here: http://wiki.gephi.org/index.php/Toolkit_porta
 # there is no installation info around the whole web.

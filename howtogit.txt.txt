@@ -32,6 +32,14 @@ click on commit button: add a message like ''random 1st change from myusername''
 click on push:
 you have shared your first contribution! congratulations!
 
+
+-
+from the git bash (command).
+open the folder above where you stored the code. 
+right click > git bash
+type on the command of git: git commit -a -m
+
+
 ---
 to pull (you want to get other's work. and you want it fresh all the times!)
 

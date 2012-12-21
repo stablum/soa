@@ -76,27 +76,17 @@ Hopefully we'll not get too many differences shifting there(...)
 
 mytoolpath=' C:\Users\MangustaMegaMastar\AppData\Roaming\.gephi\0.8.1\dev\scripts'
 sys.path.append(mytoolpath)
------IMPORT A DAMN CLASS FROM THE TOOLKIT (<-- https://wiki.gephi.org/index.php/How_to_build_the_Gephi_Toolkit )
-#once bult the toolkit from the source code
-import sys
-graphpath= "C:\\Users\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit\\org-gephi-graph-api.jar"
-sys.path.append(graphpath)
-algopath= "C:\\Users\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit\\org-gephi-algorithms.jar"
-sys.path.append(algopath)
-from org.gephi.algorithms.shortestpath import AbstractShortestPathAlgorithm
-#some_object = SomeClass() # You can now use your java class
 
 
-#In your case you probably want to use the path of your package to find the jar:
-# yourpackage/__init__.py
-import sys, os
-if 'java' in sys.platform.lower():
-    sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                 "your-lib.jar"))
-    from jython_implementation import library
-else:
-    from cpython_implementation import library
-#Hope that helps!
+
+---- ADD "CONVENTIONAL" ATTRIBUTES TO NODES
+#stuff related to attribute management
+def addNodeAttribute(name, attr_typ = AttributeType.INT) :
+    """
+    addNodeAttribute(name, attr_typ = AttributeType.INT) :
+        create a new node attribute of type attr_typ in gephi and return it
+    """
+    return getAttributeModel().getNodeTable().addColumn(name, attr_typ)
 
 -----
 SOLVED BUGS: when some complaints is solved, move it down here

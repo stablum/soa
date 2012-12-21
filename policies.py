@@ -7,6 +7,7 @@ def pro_rich(node):
     wd,n2 = sorted(pool, key=lambda x: x[0])[-1]
     e = gi.get_edge(n2,node)
     w = gi.get_weight(e)
+    print (w*0.25)
     return {e: w*0.25}
 
 def simple(node):

@@ -47,7 +47,7 @@ GraphView getVisibleView()
     Returns:
         the current visible view
 
----
+--- GETTING THE TOOLKIT
 # interfaces that we are hoping to use
 http://nexus.gephi.org/nexus/content/repositories/public/external/apidocs/org/gephi/graph/api/class-use/GraphView.html
 http://nexus.gephi.org/nexus/content/repositories/public/external/apidocs/org/gephi/graph/api/GraphModel.html
@@ -76,6 +76,17 @@ Hopefully we'll not get too many differences shifting there(...)
 
 mytoolpath=' C:\Users\MangustaMegaMastar\AppData\Roaming\.gephi\0.8.1\dev\scripts'
 sys.path.append(mytoolpath)
+
+
+
+---- ADD "CONVENTIONAL" ATTRIBUTES TO NODES
+#stuff related to attribute management
+def addNodeAttribute(name, attr_typ = AttributeType.INT) :
+    """
+    addNodeAttribute(name, attr_typ = AttributeType.INT) :
+        create a new node attribute of type attr_typ in gephi and return it
+    """
+    return getAttributeModel().getNodeTable().addColumn(name, attr_typ)
 
 -----
 SOLVED BUGS: when some complaints is solved, move it down here

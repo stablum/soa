@@ -7,4 +7,3 @@ def startup():
     import main
     print "go!"
     main.run(globals())
-

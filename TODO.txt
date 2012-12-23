@@ -1,4 +1,9 @@
 X pull
-- test the code (needs to run correctly)
-  - behaviour.py line 9: NoneType has no attribute weight
-
+  X test the code (needs to run correctly)
+    X behaviour.py line 9: NoneType has no attribute weight
+- fix output
+- calculate total weights
+- print collector data
+- pro-rich: compare with the pdf
+  - check current implementation
+  - the use of "importance" is correctly implemented?

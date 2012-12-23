@@ -1,6 +1,7 @@
 """
-abstraction for access to graph ('g'). So that the specific implementation is somewhat isolated
-and that we don't have to handle complicated type conversions in our code.
+abstraction for access to graph ('g'). So that the specific implementation 
+is somewhat isolated and that we don't have to handle complicated type 
+conversions in our code.
 """
 from config import g
 import random
@@ -89,6 +90,9 @@ def random_edges(how_many,only_alive=False): # FIXME: more elegant than parametr
     ret=random.sample(pool,how_many)
     return ret
 
+def random_edge(alive=False):
+    return random_edges(1,alive=alive)
+
 def kill_edge(e):
     g().underlyingGraph.readUnlockAll()
     set_weight(e, 0.0)
@@ -129,4 +133,15 @@ def weighted_degree(node):
 
 def degree(node):
     return node.degree
+
+def edge_importance(e):
+    a = e.source
+    b = e.target
+    if not a and b:
+        raise Exception("cannot calculate edge importance: missing edge target or edge source")
+    wda = weighted_degree(a)
+    wdb = weighted_degree(b)
+    w_ab = get_weight(e)
+    importance = 0.5 * w_ab * (wda + wdb)
+    return importance
 

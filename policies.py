@@ -3,11 +3,10 @@ import gi
 def pro_rich(node):
     pool = []
     for curr in gi.neighbors(node):
-        pool.append((gi.weighted_degree(curr),curr))
-    wd,n2 = sorted(pool, key=lambda x: x[0])[-1]
-    e = gi.get_edge(n2,node)
-    w = gi.get_weight(e)
-    return {e: w*0.25}
+        e = gi.get_edge(curr,node)
+        pool.append((gi.edge_importance(e),e))
+    importance,e = sorted(pool, key=lambda x: x[0])[-1]
+    return {e: node.budget}
 
 def simple(node):
     """

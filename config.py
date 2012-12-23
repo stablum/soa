@@ -7,6 +7,9 @@ policy_id = 'pro_rich'
 init_num_nodes = 0 # set by set_g
 max_steps = 100
 treshold_kill = 0.2
+stats_filename = "stats.csv"
+
+
 _g = None
 gephi = None
 

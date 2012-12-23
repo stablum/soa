@@ -1,9 +1,12 @@
 X pull
   X test the code (needs to run correctly)
     X behaviour.py line 9: NoneType has no attribute weight
-- fix output
-- calculate total weights
-- print collector data
-- pro-rich: compare with the pdf
-  - check current implementation
-  - the use of "importance" is correctly implemented?
+X fix output
+X calculate total weights
+X print collector data
+X pro-rich: compare with the pdf
+  X check current implementation
+  X the use of "importance" is correctly implemented?
+
+- write stats to disk
+

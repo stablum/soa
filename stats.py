@@ -1,5 +1,6 @@
 from utils import Struct
 import gi
+import config
 
 collector = None
 history = []
@@ -22,7 +23,7 @@ def new_collector():
     print "stats.new_collector!"
     global collector
     args = new_collector_dict()
-    if collector is not None:
+    if collector is None:
         history.append(collector)
     collector = Struct(**args)
     
@@ -39,3 +40,10 @@ def snapshot():
     global collector
     collector.total_weight = total_weight()
 
+def write_history():
+    global history
+    open('/tmp/workfile', 'w') as f:
+    f.write("num_kills,total_weight\n")
+    for c in history:
+        f.write(str(c.num_kills)+","+str(c.total_weight)+"\n")
+    f.close()

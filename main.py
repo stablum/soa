@@ -48,6 +48,9 @@ def initialize():
         if node is not None:
             setattr(node, "weight", 1.0)
 
+def end():
+    stats.write_history()
+
 def run(gephi_stuff): # the Highest function
     global count_steps
     config.set_g(gephi_stuff['g'])
@@ -55,4 +58,5 @@ def run(gephi_stuff): # the Highest function
     initialize()
     while not termination_condition():
         step()
+    end()
 

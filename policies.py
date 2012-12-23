@@ -1,5 +1,13 @@
 import gi
 
+def pro_poor(node):
+    pool = []
+    for curr in gi.neighbors(node):
+        e = gi.get_edge(curr,node)
+        pool.append((gi.edge_importance(e),e))
+    importance,e = sorted(pool, key=lambda x: -x[0])[-1]
+    return {e: node.budget}
+
 def pro_rich(node):
     pool = []
     for curr in gi.neighbors(node):

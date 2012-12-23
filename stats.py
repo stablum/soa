@@ -42,8 +42,9 @@ def snapshot():
 
 def write_history():
     global history
-    open(config.stats_filename, 'w') as f:
+    f = open(config.stats_filename, 'w')
     f.write("num_kills,total_weight\n")
     for c in history:
         f.write(str(c.num_kills)+","+str(c.total_weight)+"\n")
     f.close()
+

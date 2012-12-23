@@ -41,6 +41,8 @@ def snapshot():
     collector.total_weight = total_weight()
 
 def write_history():
+    """ write statistics on a file
+        this should be called at the end """
     global history
     f = open(config.stats_filename, 'w')
     f.write("num_kills,total_weight\n")

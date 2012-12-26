@@ -3,7 +3,7 @@ import config
 import gi
 
 def apply_actions(self,actions):
-    for e,increase in actions.items():
+    for e,increase in actions.items(): # where does items come from? isn't it budget?
         self.budget -= increase
         if self.budget < 0.0:
             raise Exception("programming error: budget can not be < 0.0")
@@ -18,4 +18,3 @@ def node_method(self):
     """
     actions = policies.get(config.policy_id)(self)
     apply_actions(self,actions)
-

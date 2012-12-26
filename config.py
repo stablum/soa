@@ -7,7 +7,8 @@ policy_id = 'pro_rich'
 init_num_nodes = 0 # set by set_g
 max_steps = 100
 treshold_kill = 0.2
-stats_filename = "c:\\soa\\stats.csv"
+mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\"  # "C:\\soa\\" 
+stats_filename = mypath +"stats.csv" 
 
 
 _g = None

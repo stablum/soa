@@ -9,4 +9,6 @@ X pro-rich: compare with the pdf
   X the use of "importance" is correctly implemented?
 
 - write stats to disk
-
+- use classpathhacker!!!
+X try to setup the CLASSPATH before launching gephi
+- try with spacchettato

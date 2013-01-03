@@ -1,16 +1,3 @@
-def startup():
-    import sys
-    path = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\"
-    if path not in sys.path:
-        sys.path.append(path)
-    sys.modules.clear()
-    import main
-    print "go!"
-    main.run(globals())
-
-    
-    
-    
 ##########################
 #### NEW? begin here! ####
 ####    START-UP      ####
@@ -20,14 +7,39 @@ def startup():
 # 2) open in gephi the file. 
 # 2): COPY THE SCRIPT BELOW AND PASTE IT in the gephi script-console.
 
-mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\"  # "C:\\soa\\" 
+import sys
+import os
+
+from utils import ClassPathHacker
+import main
+
+jars = ["org-gephi-algorithms.jar","org-gephi-graph-api.jar","org-gephi-data-attributes-api.jar","org-gephi-visualization-api.jar","org-gephi-project-api.jar","org-gephi-io-importer-api.jar"]
+
+def addpath(path):
+    if path not in sys.path:
+        sys.path.append(path)
+
+def addpathjar(jarpath):
+    addpath(jarpath)
+    if jarpath not in os.environ['CLASSPATH']:
+        os.environ['CLASSPATH'] += ";"+jarpath
+
+def fixpaths():
+    global jars
+    path = "c:\\soa\\"
+    addpath(path)
+    tk_path = path+"gephi-toolkit\\"
+    for jar in jars:
+        addpathjar(tk_path+jar)
+    addpathjar(path+"gephi-toolkit.jar")
+
 def startup():
-    import sys
-    if mypath not in sys.path:
-        sys.path.append(mypath)
+    fixpaths()
     sys.modules.clear()
-    import main
     print "go!"
+    import main
     main.run(globals())
+
 # then type:
 startup()
+

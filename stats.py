@@ -23,7 +23,7 @@ def new_collector():
     print "stats.new_collector!"
     global collector
     args = new_collector_dict()
-    if collector is None:
+    if collector is not None:
         history.append(collector)
     collector = Struct(**args)
     
@@ -49,5 +49,6 @@ def write_history():
     for c in history:
         print c
         f.write(str(c.num_kills)+","+str(c.total_weight)+"\n")
+        f.flush()
     f.close()
 

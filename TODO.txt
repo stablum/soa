@@ -8,7 +8,11 @@ X pro-rich: compare with the pdf
   X check current implementation
   X the use of "importance" is correctly implemented?
 
-- write stats to disk
-- use classpathhacker!!!
+X (no need) use classpathhacker!!!
 X try to setup the CLASSPATH before launching gephi
-- try with spacchettato
+X try with spacchettato
+X cerca informazioni su classpath
+X does netbeans load it?
+  X yes, so wtf?
+
+- write stats to disk

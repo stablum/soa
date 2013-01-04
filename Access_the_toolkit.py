@@ -43,13 +43,37 @@ from org.gephi.algorithms.shortestpath  import BellmanFordShortestPathAlgorithm
 # GET INSPIRED BY IT AND MAKE IT WORKING (changing the import way as the 3 lines above)
 #-----------------------------------
 
-from org.gephi.graph.api import org.gephi.graph.api as graph_api
+from org.gephi import graph.api
+import org.gephi.graph.api as graph_api
 import org.gephi.data.attributes.api as attributes_api
 import org.gephi.data.attributes.api.AttributeType as AttributeType
 import org.gephi.visualization.VizController as viz
 import org.gephi.project.api as project_api
 import org.gephi.io.importer.api as importer_api
 import java.io
+
+#----- STACKOVERFLOW gives 3 advices
+#If you have the source for the .jar, open up the .java file containing the code you wish to utilise, and look for a line near the top that specifies the package. If you find a line that says something like package foo.bar.myJavaPackage;, then you must do one of
+#import it like 
+import foo.bar.myJavaPackage #, and use the contents like
+obj = foo.bar.myJavaPackage.someClass #, or
+#import it like 
+from foo.bar import myJavaPackage #, and use the contents like 
+obj = myJavaPackage.someClass #, or
+#import it like 
+from foo.bar.myJavaPackage import someClass #, and use it like 
+obj = myClass #, but careful of name collisions using this method.
+#--- OF WHICH< ONLY THE LAST WORKS FOR US:
+>>> import sys
+>>> sys.path.append("/var/javalib/some-thobe-package.jar") # add the jar to your path
+>>> from org.thobe.somepackage import SomeClass # it's now possible to import the package
+>>> some_object = SomeClass() # You can now use your java class
+
+
+import os
+os.chdir(toolspath)
+os.curdir
+
 """
 This file is loaded when the gephi script engine is used first (before the first user script execution)
 It contains the specific gephi python api accessible from script

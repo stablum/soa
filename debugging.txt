@@ -77,8 +77,8 @@ Hopefully we'll not get too many differences shifting there(...)
 mytoolpath=' C:\Users\MangustaMegaMastar\AppData\Roaming\.gephi\0.8.1\dev\scripts'
 sys.path.append(mytoolpath)
 
-
-
+-- maybe of use
+org.python.core.Py.tojava
 ---- ADD "CONVENTIONAL" ATTRIBUTES TO NODES
 #stuff related to attribute management
 def addNodeAttribute(name, attr_typ = AttributeType.INT) :

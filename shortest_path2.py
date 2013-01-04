@@ -1,5 +1,4 @@
-def shortest_path(start, end):
-    # initialize distances and predecessor edges
+def shortest_path(start, end): # initialize distances and predecessor edges
     all_edges=g.edges # gi.edges()
     damaged= start ? end
     if len(damaged) !=0:
@@ -16,7 +15,7 @@ def shortest_path(start, end):
                 prev[e.target] = e
                 print ( i, e.source, e.target, e.weight, '         ', e)
     for e in all_edges:
-        if dist[e.target] > dist[e.source] + e.weight
+        if dist[e.target] > dist[e.source] + e.weight:
             error "Graph contains a negative-weight cycle"
     for v in g.nodes:# color all the nodes and edges as RGB 200, 200, 200
         v.color = color(200, 200, 200)

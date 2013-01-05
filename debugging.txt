@@ -101,8 +101,8 @@ http://wiki.gephi.org/index.php/Scripting_Plugin
  we have always used the 2nd...the lateral one that pops from left to right...not the the one under window.
  we shall report bugs here:
  https://github.com/gephi/gephi-plugins/issues?labels=python-scripting-plugin
----
- 
+--- FRASTSABLUM ISSUE: can't execute graphdistance
+ http://stackoverflow.com/questions/14156958/using-gephis-graphdistance-plugin-in-jython-i-have-the-correct-types-but-the
 -----
 SOLVED BUGS: when some complaints is solved, move it down here
  we reached a point where the code iteratively reduces weights according to polici simple.

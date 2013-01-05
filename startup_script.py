@@ -35,6 +35,8 @@ def fixpaths():
         addpathjar(tk_path+jar)
     addpathjar(toolpath+"gephi-toolkit.jar")
 
+fixpaths()
+    
 def startup():
     fixpaths()
     sys.modules.clear()
@@ -45,3 +47,20 @@ def startup():
 # then type:
 startup()
 
+#------
+sys.path.append("C:\\Users\\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit.jar")
+
+def help(obj = None) :
+    """
+    See help
+    """
+    if obj == None :
+        print "Python console"
+        print "Available functions : "
+        print dir(sys.modules[__name__])
+    else :
+        try :
+            print obj.__doc__
+        except :
+            print "Object has no documentation"
+ 

@@ -46,3 +46,41 @@ if e.source == start e.target==start
 for e in g.edges:
     print (e.source, e.target)
 
+    if dist[end] < float('inf'):    # highlight a shortest path with the green color (if one exists)
+        e = prev[end]
+        end.color = green
+        print ("painting", e)
+        while e != None: #while
+            if e!=None:
+                e.color = green
+                e.source.color = green
+                print (e.source, e.target, prev[e.source])
+                if prev[e.source]!=None:
+                    e = prev[e.source]
+            if e ==None:
+                break
+
+    ee=[]; squeak=0;
+    e= prev[end]
+    for i in range(1,10):
+        if ee!= None:
+            ee=prev[e.source]
+            e.source.color=green
+            if ee.source== e.source:
+                print ("1",e.source, e.target, e)
+                ee=prev[e.target]
+                e.target.color=green
+            else:
+                print ("2",e.source, e.target, e)
+            e=ee
+            e.color=green
+        else:
+            True
+        if squeak==1 :
+            break
+        if ee.source==start:
+            squeak=1
+
+
+                
+unshortest_path(v33, v11)

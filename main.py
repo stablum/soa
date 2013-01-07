@@ -24,6 +24,7 @@ def step(): # what happens in each cycle. Main calls happen here.
     print "killed edges: "+str(stats.collector.num_kills)
     stats.snapshot()
     print "total graph weight:"+str(stats.collector.total_weight)
+    print "average path length, see note1:"+ str(stats.collector.path_length)
     stats.new_collector()
 
 def termination_condition3():
@@ -49,6 +50,10 @@ def initialize():
             setattr(node, "weight", 1.0)
 
 def end():
+    print "note1: avg path length reports harmonic mean of all shortest path"
+    print "shor.path are chosen favouring high weights"
+    print "(mathematically the distance minimized between 2nodes is the sum of the inverse of the weights the edge crossed)"
+    print "avg. path length reports now the sum of the real weights. the bigger, the better"
     stats.write_history()
 
 def run(gephi_stuff): # the Highest function

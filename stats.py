@@ -1,6 +1,7 @@
 from utils import Struct
 import gi
 import config
+import shorpath
 
 collector = None
 history = []
@@ -11,7 +12,8 @@ def new_collector_dict():
     """
     ret = {
         'num_kills':0,
-        'total_weight':0
+        'total_weight':0,
+        'path_length':0
     }
     return ret
 
@@ -35,20 +37,26 @@ def total_weight():
         ret += gi.get_weight(e)
     return ret
 
+def path_length():
+    ret = 0.0
+    ret += shorpath.getpl()
+    return ret
+
 def snapshot():
     """ statistics and stuff (??) """
     global collector
     collector.total_weight = total_weight()
+    collector.path_length=path_length()
 
 def write_history():
     """ write statistics on a file
         this should be called at the end """
     global history
     f = open(config.stats_filename, 'w')
-    f.write("num_kills,total_weight\n")
+    f.write("num_kills,total_weight\n,pathlength")
     for c in history:
         print c
-        f.write(str(c.num_kills)+","+str(c.total_weight)+"\n")
+        f.write(str(c.num_kills)+","+str(c.total_weight)+"\n"+","+str(c.path_length))
         f.flush()
     f.close()
 

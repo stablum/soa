@@ -53,3 +53,16 @@ def unshortest_path(start, end):
     return (dist[end], prev, dist,mypath)   # return the total weight of the path (distance)
  
 [a,prev,dist,mypath]=unshortest_path(v33, v67)
+
+def harmean(a):
+  hm= float(len(a)) / sum([1.0 /x for x in a])
+  return(hm)
+
+alldist=[]
+for s in g.nodes:
+    for t in g.nodes:
+        if s!=t:
+            [a,prev,dist,mypath]=unshortest_path(s,t)
+            alldist.append(a)
+
+cpl=harmean(a)

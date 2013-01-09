@@ -6,28 +6,33 @@
 class Punto:
     pass
 
+    
 def unshortest_path(start, end):
     # initialize distances and predecessor edges
-    all_edges=g.edges # gi.edges()#    damaged= start ? end#if len(damaged) !=0:#    all_edges.discard(damaged.pop())
-    dist, prev = {}, {}
+    all_edges=[] #    all_edges=g.edges # gi.edges()#    damaged= start ? end#if len(damaged) !=0:#    all_edges.discard(damaged.pop())
+    for x in range(0,len(g.edges)):
+        if list(g.edges)[x].weight !=0:
+            all_edges.append(list(g.edges)[x])
+    dist, prev , distinv= {}, {}, {}
     for v in g.nodes:
         dist[v], prev[v] = float('inf'), None
     dist[start] = 0
     for i in range(len(g.nodes)):   # Bellman-Ford algorithm, tweaked so that high weight = faster 
         for e in all_edges: # TODO: exclude from the count the original AB
-            if dist[e.target] > dist[e.source] + 1./ e.weight: #... + 1./ e.weight
-                dist[e.target] = dist[e.source] + 1./ e.weight #... + 1./ e.weight
-                prev[e.target] = e
-                print ( i, e.source, e.target, e.weight, '         ', e)
-                if e.source==start or e.target ==start:
-                    print ('!!!!!!', e.source,e.target, prev[e.source], prev[e.target])
-                    prev[start]=e
-            if dist[e.source] > dist[e.target] + 1./ e.weight: #... + 1./ e.weight
-                dist[e.source] = dist[e.target] + 1./ e.weight  #... + 1./ e.weight
-                prev[e.source] = e
-                print ( i, e.source, e.target, e.weight, '         ', e)
-                if e.target==start or e.source ==start:
-                    print ('!!!!!!', e.source, e.target, prev[e.source],prev[e.target])
+            if e != (start ? end).pop()
+                if dist[e.target] > dist[e.source] +  1./ e.weight: #... + 1./ e.weight
+                    dist[e.target] = dist[e.source] +  1./ e.weight #... + 1./ e.weight
+                    prev[e.target] = e
+                    print ( i, e.source, e.target, e.weight, '         ', e)
+                    if e.source==start or e.target ==start:
+                        print ('!!!!!!', e.source,e.target, prev[e.source], prev[e.target])
+                        prev[start]=e
+                if dist[e.source] > dist[e.target] +  1./ e.weight: #... + 1./ e.weight
+                    dist[e.source] = dist[e.target] +  1./ e.weight  #... + 1./ e.weight
+                    prev[e.source] = e
+                    print ( i, e.source, e.target, e.weight, '         ', e)
+                    if e.target==start or e.source ==start:
+                        print ('!!!!!!', e.source, e.target, prev[e.source],prev[e.target])
     print('prev(start) + prev(end)', prev[start], prev[end])
     for v in g.nodes:# color all the nodes and edges as RGB 200, 200, 200
         v.color = color(200, 200, 200)
@@ -52,7 +57,7 @@ def unshortest_path(start, end):
             vv=s
     return (dist[end], prev, dist,mypath)   # return the total weight of the path (distance)
  
-[a,prev,dist,mypath]=unshortest_path(v33, v67)
+[a,prev,dist,mypath]=unshortest_path(v30,v21) # v33, v67)
 
 def harmean(a):
   hm= float(len(a)) / sum([1.0 /x for x in a])

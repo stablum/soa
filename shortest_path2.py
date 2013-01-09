@@ -6,7 +6,10 @@ def harmean(a):
 
 def allsp(start):
     # initialize distances and predecessor edges
-    all_edges=g.edges # gi.edges()#    damaged= start ? end#if len(damaged) !=0:#    all_edges.discard(damaged.pop())
+    all_edges=[] #    all_edges=g.edges # gi.edges()#    damaged= start ? end#if len(damaged) !=0:#    all_edges.discard(damaged.pop())
+    for x in range(0,len(g.edges)):
+        if list(g.edges)[x].weight !=0:
+            all_edges.append(list(g.edges)[x])
     dist, prev , distinv= {}, {}, {}
     for v in g.nodes:
         dist[v], distinv[v], prev[v] = float('inf'), float('inf'), None
@@ -38,7 +41,7 @@ hm=harmean(d) # distance with the real weights (high means good)
 hminv=harmean(dinv) # distance with the inverse of the weights (the one used in the algorithm to choose heavy weights)(low means good)
 
 allhm,allhminv=[],[]
-for t in g.nodes:
+for s in g.nodes:
     [d,dinv,dist,distinv]=allsp(s)
     allhm.append(harmean(d))
     allhminv.append(harmean(dinv))
@@ -50,3 +53,6 @@ hminv=harmean(allhminv)
 [d,dinv,dist,distinv]=allsp(v11)
 hm=harmean(d) # distance with the real weights (high means good)
 hminv=harmean(dinv) # distance with the inverse of the weights (the one used in the algorithm to choose heavy weights)(low means good)
+
+
+>>>print ([list(g.edges)[x].weight for x in range(0,len(g.edges))])

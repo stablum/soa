@@ -29,7 +29,7 @@ def allsp(start):
     d,dinv=[],[]
     for v in gi.nodes():
         if v!=start:
-            d.append(int(dist[v]))
+            d.append((dist[v])) #int
             dinv.append(distinv[v])
     return (d,dinv,dist,distinv)   # return the total weight of the path (distance)
 

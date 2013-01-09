@@ -5,10 +5,10 @@ frac_damage = 0.65
 factor_reuse = 0.25
 policy_id = 'pro_rich'
 init_num_nodes = 0 # set by set_g
-max_steps = 4
+max_steps = 100
 treshold_kill = 0.2
-#mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\"
-mypath = "C:\\soa\\" 
+mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\" # CHANGE ME!
+#mypath = "C:\\soa\\" 
 stats_filename = mypath +"stats.csv" 
 
 _g = None

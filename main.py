@@ -37,7 +37,7 @@ def termination_condition():
         return True
     return False
 
-def initialize():
+def initialize_exp():
     """
     initialization procedures. For example: attaching methods to nodes.
     """
@@ -48,15 +48,19 @@ def initialize():
         if node is not None:
             setattr(node, "weight", 1.0)
 
-def end():
+def end_exp():
     stats.write_history()
 
-def run(gephi_stuff): # the Highest function
-    global count_steps
-    config.set_g(gephi_stuff['g'])
-    config.set_gephi(gephi_stuff)
-    initialize()
+def run_exp():
+    initialize_exp()
     while not termination_condition():
         step()
-    end()
+    end_exp()
+
+def run(gephi_stuff): # the Highest function (hehe)
+    config.set_g(gephi_stuff['g'])
+    config.set_gephi(gephi_stuff)
+    for exp_num in range(0, config.exps_per_run):
+        stats.exp_num = exp_num
+        run_exp()
 

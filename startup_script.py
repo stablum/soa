@@ -10,10 +10,16 @@
 import sys
 import os
 
-from utils import ClassPathHacker
-import main
-
-jars = ["org-gephi-algorithms.jar","org-gephi-graph-api.jar","org-gephi-data-attributes-api.jar","org-gephi-visualization-api.jar","org-gephi-project-api.jar","org-gephi-io-importer-api.jar"]
+jars = [
+    "core.jar",
+    "org-gephi-algorithms.jar",
+    "org-gephi-graph-api.jar",
+    "org-gephi-data-attributes.jar",
+    "org-gephi-data-attributes-api.jar",
+    "org-gephi-visualization-api.jar",
+    "org-gephi-project-api.jar",
+    "org-gephi-io-importer-api.jar",
+]
 
 def addpath(path):
     if path not in sys.path:

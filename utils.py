@@ -1,3 +1,9 @@
+import datetime
+import time
+
+def now_timestamp():
+    return int(time.mktime(datetime.datetime.now().timetuple()))
+
 class Struct:
     def __init__(self, **entries): 
         self.__dict__.update(entries)

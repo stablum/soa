@@ -15,4 +15,10 @@ X cerca informazioni su classpath
 X does netbeans load it?
   X yes, so wtf?
 
-- write stats to disk
+X write stats to disk
+- GraphDistance nel CSV!
+    - GraphDistance wants org.gephi.graph.api.HierarchicalGraph, but I have only a org.gephi.graph.dhns.core.Dhns. How to convert the object to the new type?
+        - read gephi sources about DHNS
+            - DHNS IS a GraphModel!
+                - read sources of HierarchicalGraph (GraphModel -> HierarchicalGraph??)
+                    - underlying graph is: org.gephi.graph.dhns.graph.HierarchicalUndirectedGraphImpl -- I may use this to get org.gephi.graph.api.HierarchicalGraph

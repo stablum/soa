@@ -77,8 +77,8 @@ Hopefully we'll not get too many differences shifting there(...)
 mytoolpath=' C:\Users\MangustaMegaMastar\AppData\Roaming\.gephi\0.8.1\dev\scripts'
 sys.path.append(mytoolpath)
 
-
-
+-- maybe of use
+org.python.core.Py.tojava
 ---- ADD "CONVENTIONAL" ATTRIBUTES TO NODES
 #stuff related to attribute management
 def addNodeAttribute(name, attr_typ = AttributeType.INT) :
@@ -88,6 +88,21 @@ def addNodeAttribute(name, attr_typ = AttributeType.INT) :
     """
     return getAttributeModel().getNodeTable().addColumn(name, attr_typ)
 
+--- AVOID CONFUSION BETWEEN @ SCRIPT PLUGINS
+the script console of the gephi website 
+https://gephi.org/plugins/script-console/
+correspond to the script_plugin
+http://wiki.gephi.org/index.php/Script_plugin
+---------------------------
+ python scripting console for gephi from gephi website
+ https://gephi.org/2012/python-scripting-console-for-gephi/
+correspond to the scriptING_plugin
+http://wiki.gephi.org/index.php/Scripting_Plugin
+ we have always used the 2nd...the lateral one that pops from left to right...not the the one under window.
+ we shall report bugs here:
+ https://github.com/gephi/gephi-plugins/issues?labels=python-scripting-plugin
+--- FRASTSABLUM ISSUE: can't execute graphdistance
+ http://stackoverflow.com/questions/14156958/using-gephis-graphdistance-plugin-in-jython-i-have-the-correct-types-but-the
 -----
 SOLVED BUGS: when some complaints is solved, move it down here
  we reached a point where the code iteratively reduces weights according to polici simple.

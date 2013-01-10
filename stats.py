@@ -3,6 +3,7 @@ import utils
 from org.gephi.statistics.plugin import GraphDistance
 import gi
 import config
+import shorpath
 
 collector = None
 history = []
@@ -42,6 +43,7 @@ def total_weight():
 
 def path_length():
     ret = 0.0 # FIXME
+    ret += shorpath.getpl()
     return ret
 
 def snapshot():

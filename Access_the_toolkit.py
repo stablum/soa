@@ -43,13 +43,84 @@ from org.gephi.algorithms.shortestpath  import BellmanFordShortestPathAlgorithm
 # GET INSPIRED BY IT AND MAKE IT WORKING (changing the import way as the 3 lines above)
 #-----------------------------------
 
-from org.gephi.graph.api import org.gephi.graph.api as graph_api
+from org.gephi import graph.api
+import org.gephi.graph.api as graph_api
 import org.gephi.data.attributes.api as attributes_api
 import org.gephi.data.attributes.api.AttributeType as AttributeType
 import org.gephi.visualization.VizController as viz
 import org.gephi.project.api as project_api
 import org.gephi.io.importer.api as importer_api
 import java.io
+
+
+#----------- THIS IS THE BEST INITIALIZATION, combining demo http://wiki.gephi.org/index.php/Toolkit_-_Manipulate_attributes 
+#------------ with code of the API http://wiki.gephi.org/index.php/Script_plugin
+#----------- HOW DO WE INITIALIZE AND GET A MODEL??  it always wants an input, even when making a new model
+# our interfaces http://gephi.org/docs/api/org/gephi/graph/api/package-summary.html
+from org.gephi.project.api import ProjectController
+ProjectController.closeCurrentProject()
+ProjectController.newProject();
+ProjectController.getCurrentWorkspace()
+ProjectController.getCurrentProject()
+
+#
+gu =g.getUnderlyingGraph()
+ga = gu.getAttributes()
+#
+from org.gephi.graph.api import GraphController
+from org.gephi.graph.api import GraphModel
+from org.gephi.graph.api import Graph
+from org.gephi.data.attributes.api import AttributeController
+from org.gephi.data.attributes.api import AttributeModel 
+
+GraphController.getModel() #getGraphModel() 
+AttributeController.getModel() #getAttributeModel()
+AttributeController.getModel().getDirectedGraph()
+AttributeController.getModel().getDirectedGraph().getGraph()
+
+
+Graph.getGraphModel() #Graph.graphModel() #not working
+GraphModel.getGraph()
+GraphModel
+ungra =g.getUnderlyingGraph()
+from org.gephi.statistics.plugin import GraphDistance
+GraphDistance.execute(ungra, )
+#----- we need org.gephi.data.attributes.api.AttributeModel
+org.gephi.graph.api.GraphModel
+#------ perhaps even this is usefule g.getUnderlyingGraph().getGraphModel()
+#------- perhaps we need this Lookup
+import org.openide.awt.ActionRegistration;
+import org.openide.awt.ActionReference;
+import org.openide.awt.ActionReferences;
+import org.openide.awt.ActionID;
+import org.openide.util.Lookup;
+import org.openide.util.NbBundle.Messages;
+:In order to compile this Action, you have to add the following module dependencies to your plugin module:
+    Graph API
+    Lookup API
+    Project API 
+#----- STACKOVERFLOW gives 3 advices
+#If you have the source for the .jar, open up the .java file containing the code you wish to utilise, and look for a line near the top that specifies the package. If you find a line that says something like package foo.bar.myJavaPackage;, then you must do one of
+#import it like 
+import foo.bar.myJavaPackage #, and use the contents like
+obj = foo.bar.myJavaPackage.someClass #, or
+#import it like 
+from foo.bar import myJavaPackage #, and use the contents like 
+obj = myJavaPackage.someClass #, or
+#import it like 
+from foo.bar.myJavaPackage import someClass #, and use it like 
+obj = myClass #, but careful of name collisions using this method.
+#--- OF WHICH< ONLY THE LAST WORKS FOR US:
+>>> import sys
+>>> sys.path.append("/var/javalib/some-thobe-package.jar") # add the jar to your path
+>>> from org.thobe.somepackage import SomeClass # it's now possible to import the package
+>>> some_object = SomeClass() # You can now use your java class
+
+
+import os
+os.chdir(toolspath)
+os.curdir
+
 """
 This file is loaded when the gephi script engine is used first (before the first user script execution)
 It contains the specific gephi python api accessible from script

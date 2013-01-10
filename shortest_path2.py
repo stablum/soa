@@ -1,62 +1,58 @@
-def shortest_path(start, end):
+
+def harmean(a):
+  hm= float(len(a)) / sum([1.0 /x for x in a])
+  return(hm)
+
+
+def allsp(start):
     # initialize distances and predecessor edges
-    all_edges=g.edges # gi.edges()
-    damaged= start ? end
-    if len(damaged) !=0:
-        all_edges.discard(damaged.pop())
-    dist, prev = {}, {}
-    sp_nodes, sp_edges=set([]),set([])
+    all_edges=[] #    all_edges=g.edges # gi.edges()#    damaged= start ? end#if len(damaged) !=0:#    all_edges.discard(damaged.pop())
+    for x in range(0,len(g.edges)):
+        if list(g.edges)[x].weight !=0:
+            all_edges.append(list(g.edges)[x])
+    dist, prev , distinv= {}, {}, {}
     for v in g.nodes:
-        dist[v], prev[v] = float('inf'), None
-    dist[start] = 0
-    for i in range(len(g.nodes)):   # Bellman-Ford algorithm, tweaked so that high weight = faster 
-        for e in all_edges: # TODO: exclude from the count the original AB
-            if dist[e.target] > dist[e.source] + e.weight: #1/
-                dist[e.target] = dist[e.source] + e.weight
+        dist[v], distinv[v], prev[v] = float('inf'), float('inf'), None
+    dist[start] , distinv[start]= 0, 0
+    for i in range(len(g.nodes)):   # Bellman-Ford algorithm, tweaked so that high weight = shorter distance 
+        for e in all_edges: 
+            if distinv[e.target] > distinv[e.source] + 1./ e.weight: #... + 1./ e.weight
+                distinv[e.target] = distinv[e.source] + 1./ e.weight #... + 1./ e.weight
+                dist[e.target] = dist[e.source] + e.weight 
                 prev[e.target] = e
-                print ( i, e.source, e.target, e.weight, '         ', e)
-    for e in all_edges:
-        if dist[e.target] > dist[e.source] + e.weight
-            error "Graph contains a negative-weight cycle"
-    for v in g.nodes:# color all the nodes and edges as RGB 200, 200, 200
-        v.color = color(200, 200, 200)
-    for e in g.edges:
-        e.color = color(200, 200, 200)
-    print (prev , dist)
-    if dist[end] < float('inf') or dist[end] = float('inf'):    # highlight a shortest path with the green color (if one exists)
-        e = prev[end]
-        end.color = green
-        print e
-        while e != None: #while
-            e.color = green
-            e.source.color = green
-            print (e.source, e.target, prev[e.source])
-            e = prev[e.source]
-    return (dist[end], prev, sp_nodes, sp_edges)   # return the total weight of the path (distance)
-
-shortest_path(v11, v4)
+                if e.source==start or e.target ==start:
+                    prev[start]=e
+            if distinv[e.source] > distinv[e.target] + 1./ e.weight: #... + 1./ e.weight
+                distinv[e.source] = distinv[e.target] + 1./ e.weight  #... + 1./ e.weight
+                dist[e.source] = dist[e.target] + e.weight
+                prev[e.source] = e
+                if e.target==start or e.source ==start:
+                    pass
+    d,dinv=[],[]
+    for v in g.nodes:
+        if v!=start:
+            d.append(int(dist[v]))
+            dinv.append(distinv[v])
+    return (d,dinv,dist,distinv)   # return the total weight of the path (distance)
 
 
-    for v in g.nodes:# color all the nodes and edges as RGB 200, 200, 200
-        v.color = color(200, 200, 200)
-    for e in g.edges:
-        e.color = color(200, 200, 200)
-    if dist[end] < float('inf'):    # highlight a shortest path with the green color (if one exists)
-        e = prev[end]
-        end.color = green
-        print e
-        while e != None: #while
-            e.color = green
-            e.source.color = green
-            print (e.source, e.target, prev[e.source])
-            e = prev[e.source]
-            
-            
-if e.source == start e.target==start
-    firstlaste.appen(e)
-    
-    #\def get_equal(in_set, in_element):
-   for element in in_set:
-       if element == in_element:
-           return element
-   return None 
+[d,dinv,dist,distinv]=allsp(v11)
+hm=harmean(d) # distance with the real weights (high means good)
+hminv=harmean(dinv) # distance with the inverse of the weights (the one used in the algorithm to choose heavy weights)(low means good)
+
+allhm,allhminv=[],[]
+for s in g.nodes:
+    [d,dinv,dist,distinv]=allsp(s)
+    allhm.append(harmean(d))
+    allhminv.append(harmean(dinv))
+
+hm=harmean(allhm) # distance with the real weights (high means good)
+hminv=harmean(allhminv) 
+
+#
+[d,dinv,dist,distinv]=allsp(v11)
+hm=harmean(d) # distance with the real weights (high means good)
+hminv=harmean(dinv) # distance with the inverse of the weights (the one used in the algorithm to choose heavy weights)(low means good)
+
+
+>>>print ([list(g.edges)[x].weight for x in range(0,len(g.edges))])

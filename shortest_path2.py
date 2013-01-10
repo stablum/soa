@@ -31,17 +31,18 @@ def allsp(start):
     d,dinv=[],[]
     for v in g.nodes:
         if v!=start:
-            d.append(int(dist[v]))
+            d.append((dist[v]))
             dinv.append(distinv[v])
     return (d,dinv,dist,distinv)   # return the total weight of the path (distance)
 
 
-[d,dinv,dist,distinv]=allsp(v11)
+[d,dinv,dist,distinv]=allsp(v26)
 hm=harmean(d) # distance with the real weights (high means good)
 hminv=harmean(dinv) # distance with the inverse of the weights (the one used in the algorithm to choose heavy weights)(low means good)
 
 allhm,allhminv=[],[]
 for s in g.nodes:
+    print s
     [d,dinv,dist,distinv]=allsp(s)
     allhm.append(harmean(d))
     allhminv.append(harmean(dinv))
@@ -55,4 +56,4 @@ hm=harmean(d) # distance with the real weights (high means good)
 hminv=harmean(dinv) # distance with the inverse of the weights (the one used in the algorithm to choose heavy weights)(low means good)
 
 
->>>print ([list(g.edges)[x].weight for x in range(0,len(g.edges))])
+#print ([list(g.edges)[x].weight for x in range(0,len(g.edges))])

@@ -45,9 +45,9 @@ def initialize_exp():
     global count_steps
     count_steps = 0
     stats.new_collector()
-    for node in gi.nodes():
-        if node is not None:
-            setattr(node, "weight", 1.0)
+    #for node in gi.nodes():
+    #    if node is not None:
+    #        setattr(node, "weight", 1.0)
 
 def end_exp():
     print "note1: avg path length reports harmonic mean of all shortest path"

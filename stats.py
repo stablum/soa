@@ -14,10 +14,12 @@ def new_collector_dict():
     """
     returns the dict that describes the current data collection "snapshot"
     """
+    global exp_num
     ret = {
         'num_kills':0,
         'total_weight':0,
-        'path_length':0 #TODO! http://gephi.org/docs/toolkit/org/gephi/statistics/plugin/GraphDistance.html#getPathLength()
+        'path_length':0,#TODO! http://gephi.org/docs/toolkit/org/gephi/statistics/plugin/GraphDistance.html#getPathLength()
+        'exp_num':exp_num
     }
     return ret
 
@@ -53,16 +55,16 @@ def snapshot():
     collector.path_length = path_length()
 
 def write_history():
-    """ write statistics on a file
-        this should be called at the end """
+    """ write all statistics stored in memory on a csv file.
+        *overwrites* previous file"""
     global history
     global exp_num
-
+    print "write_history; the exp_num is now:"+str(exp_num)+"\n"
     f = open(config.stats_filename, 'w')
     f.write("num_kills,total_weight,path_length,exp_num\n")
     for c in history:
         print c
-        f.write(str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+"\n"+str(exp_num))
+        f.write(str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+"\n")
         f.flush()
     f.close()
 

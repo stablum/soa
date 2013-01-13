@@ -19,8 +19,9 @@ def new_collector_dict():
         'num_kills':0,
         'total_weight':0,
         'path_length':0,    # http://gephi.org/docs/toolkit/org/gephi/statistics/plugin/GraphDistance.html#getPathLength()
-        'exp_num':exp_num
-        'edge_importance'
+        'exp_num':exp_num,
+        'mean_edges_importance':0,
+        'std_edges_importance':0
     }
     return ret
 
@@ -49,11 +50,16 @@ def path_length():
     ret += shorpath.getpl()
     return ret
 
-def all_edges_importance():
+
+def mean_edges_importance():
     ret = 0.0 # new
-    ret += gi.get_edges_importance()
+    ret += gi.get_mean_edges_importance()
     return ret    
 
+def std_edges_importance():
+    ret = 0.0 # new
+    ret += gi.get_std_edges_importance()
+    return ret 
 
 
     
@@ -62,6 +68,8 @@ def snapshot():
     global collector
     collector.total_weight = total_weight()
     collector.path_length = path_length()
+    collector.mean_edges_importance=mean_edges_importance()
+    collector.std_edges_importance=std_edges_importance()
 
 def write_history():
     """ write all statistics stored in memory on a csv file.
@@ -70,9 +78,9 @@ def write_history():
     global exp_num
     print "write_history; the exp_num is now:"+str(exp_num)+"\n"
     f = open(config.stats_filename, 'w')
-    f.write("num_kills,total_weight,path_length,exp_num\n")
+    f.write("num_kills,total_weight,path_length,exp_num\n,mean_edges_importance,std_edges_importance")
     for c in history:
-        f.write(str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+"\n")
+        f.write(str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+"\n" +","+str(c.mean_edges_importance)+","+str(c.std_edges_importance))
         f.flush()
     f.close()
 

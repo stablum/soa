@@ -147,9 +147,32 @@ def edge_importance(e):
     importance = 0.5 * w_ab * (wda + wdb)
     return importance
 
-def get_edge_importance
-    pass #mik todo
-    return edge_importance
+def get_all_edges_importance():
+    allimp=[]
+    for e in alive_edges():
+        imp=edge_importance(e)
+        allimp.append(imp)
+    return allimp
+
+def mean(s): return sum(s) * 1.0 / len(s)
+
+def std(s):
+    avg = mean(s)
+    variance = map(lambda x: (x - avg)**2, s)
+    mean(variance)
+    import math
+    stand = math.sqrt(mean(variance))
+    return stand
+
+def get_mean_edges_importance():
+    allimp=get_all_edges_importance()
+    mean_edges_importance=mean(allimp)
+    return mean_edges_importance
+
+def get_std_edges_importance():
+    allimp=get_all_edges_importance()
+    std_edges_importance=std(allimp)
+    return std_edges_importance
 
 def get_weights_dict():
     ret = {}

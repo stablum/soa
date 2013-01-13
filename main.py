@@ -25,6 +25,9 @@ def step(): # what happens in each cycle. Main calls happen here.
     stats.snapshot()
     print "total graph weight:"+str(stats.collector.total_weight)
     print "average path length, see note1:"+ str(stats.collector.path_length)
+    print "mean edge importance:"+str(stats.collector.mean_edges_importance)
+    print "std edge importance:"+str(stats.collector.std_edges_importance)
+
     stats.new_collector()
 
 def termination_condition3():

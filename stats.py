@@ -78,9 +78,10 @@ def write_history():
     global exp_num
     print "write_history; the exp_num is now:"+str(exp_num)+"\n"
     f = open(config.stats_filename, 'w')
-    f.write("num_kills,total_weight,path_length,exp_num\n,mean_edges_importance,std_edges_importance")
+    f.write("num_kills,total_weight,path_length,exp_num,mean_edges_importance,std_edges_importance \n")
+    f.flush()
     for c in history:
-        f.write(","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+"\n" +","+str(c.mean_edges_importance)+","+str(c.std_edges_importance))
-        f.flush()
+        f.write(","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
+    f.flush()
     f.close()
 

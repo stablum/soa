@@ -1,9 +1,6 @@
 import utils
 
 frac_edges = 0.1
-pero de toda forma, deberias dar prioridad al report.
- gephi depiende ahora desde francsco, y yo francesco y maria podriamos lanzar los exp en cuanto el codigo sea listo...
-
 frac_damage = 0.65
 factor_reuse = 0.25
 policy_id = 'pro_rich'

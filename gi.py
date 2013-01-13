@@ -147,6 +147,10 @@ def edge_importance(e):
     importance = 0.5 * w_ab * (wda + wdb)
     return importance
 
+#def get_edge_importance
+#    pass #mik todo
+#    return edge_importance
+
 def get_weights_dict():
     ret = {}
     for e in edges():

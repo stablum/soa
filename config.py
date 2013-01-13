@@ -10,7 +10,7 @@ treshold_kill = 0.2
 #mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\" # CHANGE ME!
 mypath = "C:\\soa\\" 
 stats_filename = mypath +"stats.csv" 
-exps_per_run = 6
+exps_per_run = 3
 
 _g = None
 gephi = None

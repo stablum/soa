@@ -30,6 +30,7 @@ def addpathjar(jarpath):
     if jarpath not in os.environ['CLASSPATH']:
         os.environ['CLASSPATH'] += ";"+jarpath
 
+
 def fixpaths():
     global jars # BE KIND TO OTHERS: do not cancel out their mypath, just comment it :)
     #mypath="D:\\ELECTIVES\\SELF_ORGA\\new_code\\" 
@@ -49,11 +50,11 @@ def startup():
     import main
     main.run(globals())
 
+sys.path.append(mypath)
 # then type:
 startup()
 
-#------
-sys.path.append("C:\\Users\\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit.jar")
+#------ 
 
 def help(obj = None) :
     """
@@ -68,4 +69,7 @@ def help(obj = None) :
             print obj.__doc__
         except :
             print "Object has no documentation"
- 
+
+
+#sys.path.append("C:\\Users\\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit.jar")
+

@@ -53,8 +53,7 @@ def startup():
 # then type:
 startup()
 
-#------
-sys.path.append("C:\\Users\\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit.jar")
+#------ 
 
 def help(obj = None) :
     """
@@ -69,4 +68,7 @@ def help(obj = None) :
             print obj.__doc__
         except :
             print "Object has no documentation"
- 
+
+
+sys.path.append("C:\\Users\\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit.jar")
+

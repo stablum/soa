@@ -63,7 +63,6 @@ def write_history():
     f = open(config.stats_filename, 'w')
     f.write("num_kills,total_weight,path_length,exp_num\n")
     for c in history:
-        print c
         f.write(str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+"\n")
         f.flush()
     f.close()

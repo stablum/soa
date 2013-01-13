@@ -145,3 +145,6 @@ def edge_importance(e):
     importance = 0.5 * w_ab * (wda + wdb)
     return importance
 
+def get_edge_importance
+    
+    return edge_importance

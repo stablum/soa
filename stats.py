@@ -18,8 +18,9 @@ def new_collector_dict():
     ret = {
         'num_kills':0,
         'total_weight':0,
-        'path_length':0,#TODO! http://gephi.org/docs/toolkit/org/gephi/statistics/plugin/GraphDistance.html#getPathLength()
+        'path_length':0,    # http://gephi.org/docs/toolkit/org/gephi/statistics/plugin/GraphDistance.html#getPathLength()
         'exp_num':exp_num
+        'edge_importance'
     }
     return ret
 
@@ -48,6 +49,14 @@ def path_length():
     ret += shorpath.getpl()
     return ret
 
+def all_edges_importance():
+    ret = 0.0 # new
+    ret += gi.get_edges_importance()
+    return ret    
+
+
+
+    
 def snapshot():
     """ statistics and stuff (??) """
     global collector

@@ -4,13 +4,16 @@ def harmean(a):
     
     # removing values 0 in the list 'a'
     a_filt = filter(lambda x: x != 0, a)
+    
+    a_no_inf = [ 99999 if x > 99999 else x for x in a_filt ]
 
     # calculating harmonic mean
-    s = sum([1.0 /x for x in a_filt])
+    s = sum([1.0 /x for x in a_no_inf])
     
     if s == 0:
-        raise Exception("harmean: sum is 0; a="+str(a)+",a_filt="+str(a_filt))
-    hm= float(len(a) / s)
+        raise Exception("harmean: sum is 0; a="+str(a)+",a_filt="+str(a_filt)+",a_no_inf="+str(a_no_inf))
+    
+    hm = float(len(a)) / float(s)
     return hm
 
 def allsp(start):

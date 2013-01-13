@@ -54,7 +54,6 @@ def end_exp():
     print "shor.path are chosen favouring high weights"
     print "(mathematically the distance minimized between 2nodes is the sum of the inverse of the weights the edge crossed)"
     print "avg. path length reports now the sum of the real weights. the bigger, the better"
-    stats.write_history()
 
 def run_exp():
     initialize_exp()
@@ -68,4 +67,5 @@ def run(gephi_stuff): # the Highest function (hehe)
     for exp_num in range(0, config.exps_per_run):
         stats.exp_num = exp_num
         run_exp()
+    stats.write_history()
 

@@ -45,15 +45,14 @@ def initialize_exp():
     global count_steps
     count_steps = 0
     stats.new_collector()
-#    for node in gi.nodes():
-#        if node is not None:
-#            setattr(node, "weight", 1.0)
+    gi.save_weights()
 
 def end_exp():
     print "note1: avg path length reports harmonic mean of all shortest path"
     print "shor.path are chosen favouring high weights"
     print "(mathematically the distance minimized between 2nodes is the sum of the inverse of the weights the edge crossed)"
     print "avg. path length reports now the sum of the real weights. the bigger, the better"
+    gi.restore_weights()
 
 def run_exp():
     initialize_exp()
@@ -64,6 +63,7 @@ def run_exp():
 def run(gephi_stuff): # the Highest function (hehe)
     config.set_g(gephi_stuff['g'])
     config.set_gephi(gephi_stuff)
+    gi.save_weights()
     for exp_num in range(0, config.exps_per_run):
         stats.exp_num = exp_num
         run_exp()

@@ -6,6 +6,8 @@ conversions in our code.
 from config import g
 import random
 
+saved_weights = None
+
 def nodes():
     """
     returns the graph's nodes
@@ -146,5 +148,31 @@ def edge_importance(e):
     return importance
 
 def get_edge_importance
-    
+    pass #mik todo
     return edge_importance
+
+def get_weights_dict():
+    ret = {}
+    for e in edges():
+        w = get_weight(e)
+        ret[e] = w
+    return ret
+
+def save_weights():
+    """ 
+    function used to save (for a consequent restore) of the status of the graph (that is, weights of edges)
+    """
+    global saved_weights
+    saved_weights = get_weights_dict()
+
+def restore_weights_from_dict(d):
+    for e,w in d.items():
+        set_weight(e,w)
+
+def restore_weights():
+    """
+    function that is complementar to save_weights(): restore the weights to the saved state
+    """
+    global saved_weights
+    restore_weights_from_dict(saved_weights)
+

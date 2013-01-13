@@ -62,7 +62,7 @@ def std_edges_importance():
     return ret 
 
 
-    
+
 def snapshot():
     """ statistics and stuff (??) """
     global collector
@@ -80,7 +80,7 @@ def write_history():
     f = open(config.stats_filename, 'w')
     f.write("num_kills,total_weight,path_length,exp_num\n,mean_edges_importance,std_edges_importance")
     for c in history:
-        f.write(str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+"\n" +","+str(c.mean_edges_importance)+","+str(c.std_edges_importance))
+        f.write(","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+"\n" +","+str(c.mean_edges_importance)+","+str(c.std_edges_importance))
         f.flush()
     f.close()
 

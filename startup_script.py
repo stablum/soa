@@ -30,17 +30,20 @@ def addpathjar(jarpath):
     if jarpath not in os.environ['CLASSPATH']:
         os.environ['CLASSPATH'] += ";"+jarpath
 
+mypath="D:\\ELECTIVES\\SELF_ORGA\\new_code\\" 
+#mypath = "c:\\soa\\"
+addpath(mypath)
+
 def fixpaths():
     global jars # BE KIND TO OTHERS: do not cancel out their mypath, just comment it :)
-    #mypath="D:\\ELECTIVES\\SELF_ORGA\\new_code\\" 
-    mypath = "c:\\soa\\"
     addpath(mypath)
-    toolpath= mypath # for those who have the toolkit under the same folder
-    #toolpath= "C:\\Users\\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit\\"
+    #toolpath= mypath # for those who have the toolkit under the same folder
+    toolpath= "C:\\Users\\MangustaMegaMastar\\Downloads\\4gephi\\gephi-0.8.1-beta.sources\\gephi-0.8.1-beta.sources\\toolkit\\gephi-toolkit\\"
     tk_path = toolpath+"gephi-toolkit\\"
     for jar in jars:
         addpathjar(tk_path+jar)
     addpathjar(toolpath+"gephi-toolkit.jar")
+
 
 def startup():
     fixpaths()

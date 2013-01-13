@@ -148,6 +148,7 @@ def edge_importance(e):
     return importance
 
 def get_all_edges_importance():
+    global allimp
     allimp=[]
     for e in alive_edges():
         imp=edge_importance(e)
@@ -165,12 +166,13 @@ def std(s):
     return stand
 
 def get_mean_edges_importance():
+    global allimp
     allimp=get_all_edges_importance()
     mean_edges_importance=mean(allimp)
     return mean_edges_importance
 
 def get_std_edges_importance():
-    allimp=get_all_edges_importance()
+    global allimp
     std_edges_importance=std(allimp)
     return std_edges_importance
 

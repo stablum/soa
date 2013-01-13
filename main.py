@@ -15,9 +15,13 @@ def wakeup_nodes(nodes):
     for node in nodes:
         behaviour.node_method(node) # the action is defined there...
 
+def step_counter(): # this gets launched by stats
+    global count_steps
+    count_steps +=1
+    return count_steps
+
 def step(): # what happens in each cycle. Main calls happen here.
     global count_steps
-    count_steps += 1
     print "count_steps "+str(count_steps)
     nodes = environment.step()
     wakeup_nodes(nodes) # calls their behaviour, which calls the policy (what to do), and finally applies actions

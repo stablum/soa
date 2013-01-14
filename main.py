@@ -15,11 +15,6 @@ def wakeup_nodes(nodes):
     for node in nodes:
         behaviour.node_method(node) # the action is defined there...
 
-def iteration_counter(): # this gets launched by stats
-    global count_iterations
-    count_iterations +=1
-    return count_iterations
-
 def iteration(): # what happens in each cycle. Main calls happen here.
     global count_iterations
     print "count_iterations "+str(count_iterations)
@@ -31,7 +26,7 @@ def iteration(): # what happens in each cycle. Main calls happen here.
     print "average path length, see note1:"+ str(stats.collector.path_length)
     print "mean edge importance:"+str(stats.collector.mean_edges_importance)
     print "std edge importance:"+str(stats.collector.std_edges_importance)
-
+    count_iterations +=1
     stats.new_collector()
 
 def termination_condition3():

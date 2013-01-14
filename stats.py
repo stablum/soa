@@ -72,7 +72,7 @@ def snapshot():
 
 def get_run_num_offset():
     if os.path.exists(config.stats_filename):
-        ret = get_last_saved_run_num()
+        ret = get_last_saved_run_num() + 1
     else:
         ret = 0
     return ret
@@ -86,9 +86,10 @@ def write_history():
     print "write_history; the run_num is now:"+str(run_num)+"\n"
     
     run_num_offset = get_run_num_offset()
-    f = open(config.stats_filename, 'w')
-    f.write("count_iterations,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance \n")
-    f.flush()
+    f = open(config.stats_filename, 'a')
+    if run_num_offset > 0:
+        f.write("count_iterations,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance\n")
+        f.flush()
     for c in history:
         f.write(str(c.count_iterations)+","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(run_num_offset+c.run_num)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
         f.flush()
@@ -100,5 +101,7 @@ def get_last_saved_run_num():
     """
     f = open(config.stats_filename, 'r')
     last_line = f.readlines()[-1]
-    return int(last_line.split(",")[4])
+    ret = int(last_line.split(",")[4])
+    f.close()
+    return ret
 

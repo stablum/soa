@@ -4,22 +4,26 @@ from org.gephi.statistics.plugin import GraphDistance
 import gi
 import config
 import shorpath
+import main
 
 collector = None
 history = []
-exp_num = 0
-exp_timestamp = utils.now_timestamp()
+run_num = 1
+run_timestamp = utils.now_timestamp()
 
 def new_collector_dict():
     """
     returns the dict that describes the current data collection "snapshot"
     """
-    global exp_num
+    global run_num
+    global count_iterations
+    count_iterations=main.iteration_counter()
     ret = {
+        'count_iterations':count_iterations,
         'num_kills':0,
         'total_weight':0,
         'path_length':0,    # http://gephi.org/docs/toolkit/org/gephi/statistics/plugin/GraphDistance.html#getPathLength()
-        'exp_num':exp_num,
+        'run_num':run_num,
         'mean_edges_importance':0,
         'std_edges_importance':0
     }
@@ -62,7 +66,7 @@ def std_edges_importance():
     return ret 
 
 
-    
+
 def snapshot():
     """ statistics and stuff (??) """
     global collector
@@ -75,12 +79,15 @@ def write_history():
     """ write all statistics stored in memory on a csv file.
         *overwrites* previous file"""
     global history
-    global exp_num
-    print "write_history; the exp_num is now:"+str(exp_num)+"\n"
+    global run_num
+    global count_iterations
+    print "write_history; the run_num is now:"+str(run_num)+"\n"
     f = open(config.stats_filename, 'w')
-    f.write("num_kills,total_weight,path_length,exp_num\n,mean_edges_importance,std_edges_importance")
+    f.write("count_iterations,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance \n")
+    f.flush()
     for c in history:
-        f.write(str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+"\n" +","+str(c.mean_edges_importance)+","+str(c.std_edges_importance))
-        f.flush()
+        f.write(","+str(c.count_iterations)+","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.run_num)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
+    f.write("\n")
+    f.flush()
     f.close()
 

@@ -12,6 +12,9 @@ history = []
 run_num = 1
 run_timestamp = utils.now_timestamp()
 
+def infer_stats_filename():
+    return config.stats_filename.replace(".csv","_"+config.policy_id+".csv")
+
 def new_collector_dict():
     """
     returns the dict that describes the current data collection "snapshot"
@@ -71,7 +74,7 @@ def snapshot():
     collector.std_edges_importance=std_edges_importance()
 
 def get_run_num_offset():
-    if os.path.exists(config.stats_filename):
+    if os.path.exists(infer_stats_filename()):
         ret = get_last_saved_run_num() + 1
     else:
         ret = 0
@@ -86,7 +89,7 @@ def write_history():
     print "write_history; the run_num is now:"+str(run_num)+"\n"
     
     run_num_offset = get_run_num_offset()
-    f = open(config.stats_filename, 'a')
+    f = open(infer_stats_filename(), 'a')
     if run_num_offset > 0:
         f.write("count_iterations,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance\n")
         f.flush()
@@ -99,7 +102,7 @@ def get_last_saved_run_num():
     """
     returns the last saved run number
     """
-    f = open(config.stats_filename, 'r')
+    f = open(infer_stats_filename(), 'r')
     last_line = f.readlines()[-1]
     ret = int(last_line.split(",")[4])
     f.close()

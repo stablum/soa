@@ -50,10 +50,11 @@ def initialize_run():
     gi.save_weights()
 
 def end_run():
-    print "note1: avg path length reports harmonic mean of all shortest path"
-    print "shor.path are chosen favouring high weights"
-    print "(mathematically the distance minimized between 2nodes is the sum of the inverse of the weights the edge crossed)"
-    print "avg. path length reports now the sum of the real weights. the bigger, the better"
+    # FIXME: move following descriptions in a more appropriate place
+    # note1: avg path length reports harmonic mean of all shortest path
+    # shor.path are chosen favouring high weights
+    # mathematically the distance minimized between 2nodes is the sum of the inverse of the weights the edge crossed
+    # avg. path length reports now the sum of the real weights. the bigger, the better
     gi.restore_weights()
 
 def simulation_run():

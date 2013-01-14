@@ -83,11 +83,10 @@ def write_history():
     global count_steps
     print "write_history; the exp_num is now:"+str(exp_num)+"\n"
     f = open(config.stats_filename, 'w')
-    f.write("count_steps,num_kills,total_weight,path_length,exp_num,mean_edges_importance,std_edges_importance \n")
+    f.write(",count_steps,num_kills,total_weight,path_length,exp_num,mean_edges_importance,std_edges_importance \n")
     f.flush()
     for c in history:
         f.write(","+str(c.count_steps)+","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.exp_num)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
-    f.write("\n")
     f.flush()
     f.close()
 

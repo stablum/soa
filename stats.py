@@ -16,10 +16,10 @@ def new_collector_dict():
     returns the dict that describes the current data collection "snapshot"
     """
     global run_num
-    global count_steps
-    count_steps=main.step_counter()
+    global count_iterations
+    count_iterations=main.iteration_counter()
     ret = {
-        'count_steps':count_steps,
+        'count_iterations':count_iterations,
         'num_kills':0,
         'total_weight':0,
         'path_length':0,    # http://gephi.org/docs/toolkit/org/gephi/statistics/plugin/GraphDistance.html#getPathLength()
@@ -80,13 +80,13 @@ def write_history():
         *overwrites* previous file"""
     global history
     global run_num
-    global count_steps
+    global count_iterations
     print "write_history; the run_num is now:"+str(run_num)+"\n"
     f = open(config.stats_filename, 'w')
-    f.write("count_steps,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance \n")
+    f.write("count_iterations,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance \n")
     f.flush()
     for c in history:
-        f.write(","+str(c.count_steps)+","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.run_num)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
+        f.write(","+str(c.count_iterations)+","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(c.run_num)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
     f.write("\n")
     f.flush()
     f.close()

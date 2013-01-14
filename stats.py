@@ -91,7 +91,6 @@ def write_history():
         f.write("count_iterations,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance\n")
         f.flush()
     for c in history:
-        f.write("c.run_num is:"+str(c.run_num)+"\n")
         f.write(str(c.count_iterations)+","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(run_num_offset+c.run_num)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
         f.flush()
     f.close()

@@ -44,13 +44,12 @@ def fixpaths():
         addpathjar(tk_path+jar)
     addpathjar(toolpath+"gephi-toolkit.jar")
 
-
 def startup():
     fixpaths()
     sys.modules.clear()
     print "go!"
     import main
-    main.run(globals())
+    main.series(globals())
 
 # then type:
 startup()

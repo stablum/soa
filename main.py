@@ -45,7 +45,7 @@ def termination_condition():
         return True
     return False
 
-def initialize_exp():
+def initialize_run():
     """
     initialization procedures. For example: attaching methods to nodes.
     """
@@ -54,25 +54,25 @@ def initialize_exp():
     stats.new_collector()
     gi.save_weights()
 
-def end_exp():
+def end_run():
     print "note1: avg path length reports harmonic mean of all shortest path"
     print "shor.path are chosen favouring high weights"
     print "(mathematically the distance minimized between 2nodes is the sum of the inverse of the weights the edge crossed)"
     print "avg. path length reports now the sum of the real weights. the bigger, the better"
     gi.restore_weights()
 
-def run_exp():
-    initialize_exp()
+def simulation_run():
+    initialize_run()
     while not termination_condition():
         step()
-    end_exp()
+    end_run()
 
-def run(gephi_stuff): # the Highest function (hehe)
+def series(gephi_stuff): # the Highest function (hehe)
     config.set_g(gephi_stuff['g'])
     config.set_gephi(gephi_stuff)
     gi.save_weights()
-    for exp_num in range(0, config.exps_per_run):
-        stats.exp_num = exp_num
-        run_exp()
+    for run_num in range(0, config.runs_per_series):
+        stats.run_num = run_num
+        simulation_run()
     stats.write_history()
 

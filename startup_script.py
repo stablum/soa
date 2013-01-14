@@ -50,7 +50,7 @@ def startup():
     sys.modules.clear()
     print "go!"
     import main
-    main.run(globals())
+    main.series(globals())
 
 # then type:
 startup()

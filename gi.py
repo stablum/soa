@@ -49,6 +49,12 @@ def num_edges():
     """
     return len(edges())
 
+def num_alive_edges():
+    """
+    returns the how many edges are there
+    """
+    return len(alive_edges())
+    
 def num_nodes():
     return len(nodes())
     
@@ -77,7 +83,7 @@ def random_neighbor(node):
 
     raise Exception("no neighbor found!")
 
-def random_edges(how_many,only_alive=False): # FIXME: more elegant than parametrized?? Boh!
+def random_edges(how_many,only_alive=True): # FIXME: more elegant than parametrized?? Boh!
     """ 
     returns some edges, randomly selected
     """
@@ -92,7 +98,7 @@ def random_edges(how_many,only_alive=False): # FIXME: more elegant than parametr
     ret=random.sample(pool,how_many)
     return ret
 
-def random_edge(alive=False):
+def random_edge(alive=True):
     return random_edges(1,alive=alive)
 
 def kill_edge(e):

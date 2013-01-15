@@ -30,7 +30,7 @@ def iteration(): # what happens in each cycle. Main calls happen here.
     stats.new_collector()
 
 def termination_condition3():
-    if gi.num_edges() <= 0:
+    if gi.num_alive_edges() <= 0:
         return True
     return False
 
@@ -59,7 +59,7 @@ def end_run():
 
 def simulation_run():
     initialize_run()
-    while not termination_condition():
+    while not (termination_condition() or termination_condition3()):
         iteration()
     end_run()
 

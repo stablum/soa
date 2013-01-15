@@ -13,7 +13,7 @@ run_num = 0
 run_timestamp = utils.now_timestamp()
 
 def infer_stats_filename():
-    return config.stats_filename#.replace(".csv","_"+config.policy_id+".csv")
+    return config.stats_filename.replace(".csv","_"+config.policy_id+".csv")
 
 def new_collector_dict():
     """

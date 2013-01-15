@@ -2,12 +2,16 @@ import datetime
 import time
 import math
 
-def mean(s): 
-    return float(sum(s)) / float(len(s))
+def mean(a): 
+    count = float(len(a))
+    if count == 0:
+       raise Exception("unable to make mean with no elements")
+    s = float(sum(a))
+    return float(s) / float(count)
 
-def std(s):
-    avg = mean(s)
-    variance = map(lambda x: (x - avg)**2, s)
+def std(a):
+    avg = mean(a)
+    variance = map(lambda x: (x - avg)**2, a)
     mean(variance)
     stand = math.sqrt(mean(variance))
     return stand

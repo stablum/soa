@@ -7,9 +7,9 @@ policy_id = 'pro_poor'
 init_num_nodes = 0 # set by set_g
 max_iterations = 300
 treshold_kill = 0.2
-mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\" # CHANGE ME!
-#mypath = "C:\\soa\\" 
-stats_filename = mypath +"stats_"+policy_id+".csv" 
+#mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\" # CHANGE ME!
+mypath = "C:\\soa\\" 
+stats_filename = mypath +"stats.csv" 
 runs_per_series = 10
 
 _g = None

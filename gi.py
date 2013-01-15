@@ -89,13 +89,14 @@ def random_edges(how_many,only_alive=True): # FIXME: more elegant than parametri
     """ 
     returns some edges, randomly selected
     """
-    how_many = min(how_many,num_edges())
 
     pool = None
     if only_alive:
         pool = alive_edges()
     else:
         pool = edges()
+
+    how_many = min(how_many,len(pool))
 
     ret=random.sample(pool,how_many)
     return ret
@@ -155,7 +156,7 @@ def edge_importance(e):
     importance = 0.5 * w_ab * (wda + wdb)
     return importance
 
-def get_all_edges_importance():
+def get_all_edges_importances():
     return [edge_importance(e) for e in alive_edges()]
 
 def get_weights_dict():

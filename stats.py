@@ -41,7 +41,6 @@ def new_collector():
     if collector is not None:
         history.append(collector)
     collector = utils.Struct(**args)
-    
     return collector
 
 def total_weight():
@@ -61,6 +60,7 @@ def snapshot():
     edges_importances = gi.get_all_edges_importances()
     collector.mean_edges_importance=utils.mean(edges_importances)
     collector.std_edges_importance=utils.std(edges_importances)
+    print collector.__dict__
 
 def get_run_num_offset():
     if os.path.exists(infer_stats_filename()):
@@ -76,13 +76,14 @@ def write_history():
     global run_num
     global count_iterations
     print "write_history; the run_num is now:"+str(run_num)+"\n"
-    global collector #mik
-
+    
     run_num_offset = get_run_num_offset()
     f = open(infer_stats_filename(), 'a')
+    
     if run_num_offset == 0:
         f.write("count_iterations,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance\n")
         f.flush()
+    
     for c in history: #+c.run_num DELETED
         f.write(",".join([
             str(x) 
@@ -99,6 +100,8 @@ def write_history():
             ]) + "\n" )
         f.flush()
     f.close()
+    
+    history = [] # we gotta clear the history because it's written
 
 def get_last_saved_run_num():
     """

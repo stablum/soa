@@ -3,8 +3,10 @@ abstraction for access to graph ('g'). So that the specific implementation
 is somewhat isolated and that we don't have to handle complicated type 
 conversions in our code.
 """
-from config import g
 import random
+
+from config import g
+import utils
 
 saved_weights = None
 
@@ -154,35 +156,22 @@ def edge_importance(e):
     return importance
 
 def get_all_edges_importance():
-    global allimp
-    allimp=[]
+    allimp = []
     for e in alive_edges():
-        imp=edge_importance(e)
+        imp = edge_importance(e)
         allimp.append(imp)
     return allimp
 
-def mean(s): 
-    return float(sum(s)) / float(len(s))
-
-def std(s):
-    avg = mean(s)
-    variance = map(lambda x: (x - avg)**2, s)
-    mean(variance)
-    import math
-    stand = math.sqrt(mean(variance))
-    return stand
 
 def get_mean_edges_importance():
-    global allimp
-    allimp=get_all_edges_importance()
-    mean_edges_importance=mean(allimp)
-    return mean_edges_importance
+    allimp = get_all_edges_importance()
+    ret = utils.mean(allimp)
+    return ret
 
 def get_std_edges_importance():
-    global allimp
-    std_edges_importance=std(allimp)
-    return std_edges_importance
-
+    allimp = get_all_edges_importance()
+    ret = utils.std(allimp)
+    return ret
 
 def get_weights_dict():
     ret = {}

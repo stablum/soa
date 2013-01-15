@@ -41,7 +41,7 @@ def alive_edges():
     """
     return a list of edges that have not been killed
     """
-    return [ e for e in edges() if e.weight != 0 ]
+    return [ e for e in edges() if get_weight(e) > 0.0 ]
 
 def num_edges():
     """

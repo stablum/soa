@@ -156,22 +156,7 @@ def edge_importance(e):
     return importance
 
 def get_all_edges_importance():
-    allimp = []
-    for e in alive_edges():
-        imp = edge_importance(e)
-        allimp.append(imp)
-    return allimp
-
-
-def get_mean_edges_importance():
-    allimp = get_all_edges_importance()
-    ret = utils.mean(allimp)
-    return ret
-
-def get_std_edges_importance():
-    allimp = get_all_edges_importance()
-    ret = utils.std(allimp)
-    return ret
+    return [edge_importance(e) for e in alive_edges()]
 
 def get_weights_dict():
     ret = {}

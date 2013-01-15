@@ -70,8 +70,9 @@ def snapshot():
     global collector
     collector.total_weight = total_weight()
     collector.path_length = path_length()
-    collector.mean_edges_importance=mean_edges_importance()
-    collector.std_edges_importance=std_edges_importance()
+    edges_importances = gi.get_all_edges_importances()
+    collector.mean_edges_importance=utils.mean(edges_importances)
+    collector.std_edges_importance=utils.std(edges_importances)
 
 def get_run_num_offset():
     if os.path.exists(infer_stats_filename()):

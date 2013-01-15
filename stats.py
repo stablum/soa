@@ -9,11 +9,11 @@ import os
 
 collector = None
 history = []
-run_num = 1
+run_num = 0
 run_timestamp = utils.now_timestamp()
 
 def infer_stats_filename():
-    return config.stats_filename.replace(".csv","_"+config.policy_id+".csv")
+    return config.stats_filename#.replace(".csv","_"+config.policy_id+".csv")
 
 def new_collector_dict():
     """
@@ -87,16 +87,20 @@ def write_history():
     global run_num
     global count_iterations
     print "write_history; the run_num is now:"+str(run_num)+"\n"
-    
+    global collector #mik
+
     run_num_offset = get_run_num_offset()
     f = open(infer_stats_filename(), 'a')
-    if run_num_offset > 0:
+    if run_num_offset == 0:
         f.write("count_iterations,num_kills,total_weight,path_length,run_num,mean_edges_importance,std_edges_importance\n")
         f.flush()
-    for c in history:
-        f.write(str(c.count_iterations)+","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(run_num_offset+c.run_num)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
+    for c in history: #+c.run_num DELETED
+        f.write(str(c.count_iterations)+","+str(c.num_kills)+","+str(c.total_weight)+","+str(c.path_length)+","+str(run_num_offset)+","+str(c.mean_edges_importance)+","+str(c.std_edges_importance)+"\n")
         f.flush()
     f.close()
+    del (collector, history)
+    collector = None
+    history = [] #mik
 
 def get_last_saved_run_num():
     """
@@ -104,7 +108,12 @@ def get_last_saved_run_num():
     """
     f = open(infer_stats_filename(), 'r')
     last_line = f.readlines()[-1]
-    ret = int(last_line.split(",")[4])
+    f = open(infer_stats_filename(), 'r') #startmik
+    first_line = f.readlines()[0] 
+    if last_line==first_line:
+        ret=0
+    else:
+        ret = int(last_line.split(",")[4]) # endmik
     f.close()
     return ret
 

@@ -70,5 +70,5 @@ def series(gephi_stuff): # the Highest function (hehe)
     for run_num in range(0, config.runs_per_series):
         stats.run_num = run_num
         simulation_run()
-    stats.write_history()
+        stats.write_history()
 

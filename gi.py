@@ -161,7 +161,8 @@ def get_all_edges_importance():
         allimp.append(imp)
     return allimp
 
-def mean(s): return sum(s) * 1.0 / len(s)
+def mean(s): 
+    return float(sum(s)) / float(len(s))
 
 def std(s):
     avg = mean(s)

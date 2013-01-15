@@ -51,9 +51,7 @@ def total_weight():
     return ret
 
 def path_length():
-    ret = 0.0 # FIXME
-    ret += shorpath.getpl()
-    return ret
+    return shorpath.getpl()
 
 def mean_edges_importance():
     ret = 0.0 # new

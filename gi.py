@@ -3,8 +3,10 @@ abstraction for access to graph ('g'). So that the specific implementation
 is somewhat isolated and that we don't have to handle complicated type 
 conversions in our code.
 """
-from config import g
 import random
+
+from config import g
+import utils
 
 saved_weights = None
 
@@ -41,7 +43,7 @@ def alive_edges():
     """
     return a list of edges that have not been killed
     """
-    return [ e for e in edges() if e.weight != 0 ]
+    return [ e for e in edges() if get_weight(e) > 0.0 ]
 
 def num_edges():
     """
@@ -88,12 +90,13 @@ def random_edges(how_many,only_alive=True): # FIXME: more elegant than parametri
     returns some edges, randomly selected
     """
     how_many = min(how_many,num_alive_edges())
-
     pool = None
     if only_alive:
         pool = alive_edges()
     else:
         pool = edges()
+
+    how_many = min(how_many,len(pool))
 
     ret=random.sample(pool,how_many)
     return ret
@@ -153,35 +156,8 @@ def edge_importance(e):
     importance = 0.5 * w_ab * (wda + wdb)
     return importance
 
-def get_all_edges_importance():
-    global allimp
-    allimp=[]
-    for e in alive_edges():
-        imp=edge_importance(e)
-        allimp.append(imp)
-    return allimp
-
-def mean(s): return sum(s) * 1.0 / len(s)
-
-def std(s):
-    avg = mean(s)
-    variance = map(lambda x: (x - avg)**2, s)
-    mean(variance)
-    import math
-    stand = math.sqrt(mean(variance))
-    return stand
-
-def get_mean_edges_importance():
-    global allimp
-    allimp=get_all_edges_importance()
-    mean_edges_importance=mean(allimp)
-    return mean_edges_importance
-
-def get_std_edges_importance():
-    global allimp
-    std_edges_importance=std(allimp)
-    return std_edges_importance
-
+def get_all_edges_importances():
+    return [edge_importance(e) for e in alive_edges()]
 
 def get_weights_dict():
     ret = {}

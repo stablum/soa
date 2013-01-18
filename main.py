@@ -16,6 +16,7 @@ def wakeup_nodes(nodes):
         behaviour.node_method(node) # the action is defined there...
 
 def iteration(): # what happens in each cycle. Main calls happen here.
+    print "iteration!"
     global count_iterations
     print "count_iterations "+str(count_iterations)
     nodes = environment.step()
@@ -32,6 +33,7 @@ def iteration(): # what happens in each cycle. Main calls happen here.
 def termination_condition3():
     if gi.num_alive_edges() <= 0:
         print("all edges have been killed! THE END!")
+
         return True
     return False
 
@@ -39,6 +41,7 @@ def termination_condition():
     global count_iterations
     if count_iterations >= config.max_iterations:
         print("max number iterations reached.")
+
         return True
     return False
 
@@ -52,6 +55,7 @@ def initialize_run():
     gi.save_weights()
 
 def end_run():
+    print "end run!"
     # FIXME: move following descriptions in a more appropriate place
     # note1: avg path length reports harmonic mean of all shortest path
     # shor.path are chosen favouring high weights
@@ -60,12 +64,14 @@ def end_run():
     gi.restore_weights()
 
 def simulation_run():
+    print "simulation_run!"
     initialize_run()
     while not (termination_condition() or termination_condition3()):
         iteration()
     end_run()
 
 def series(gephi_stuff): # the Highest function (hehe)
+    print "series!"
     config.set_g(gephi_stuff['g'])
     config.set_gephi(gephi_stuff)
     gi.save_weights()

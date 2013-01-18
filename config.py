@@ -9,8 +9,10 @@ max_iterations = 1
 treshold_kill = 0.2
 mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\" # CHANGE ME!
 #mypath = "C:\\soa\\" 
-stats_filename = mypath +"stats_"+policy_id+".csv" 
-runs_per_series = 1
+#stats_filename = mypath +"stats_"+policy_id+".csv" 
+stats_filename = mypath +"stats.csv" 
+runs_per_series = 10
+
 
 _g = None
 gephi = None
@@ -24,11 +26,9 @@ def gephi():
     return _gephi
 
 def set_g(__g):
-    print "config.set_g!"
     global _g
     global init_num_nodes
     _g = __g
-    print "config.g is now ",type(g)
     init_num_nodes = len(g().nodes)
 
 def set_gephi(gephi_stuff):

@@ -37,9 +37,9 @@ def new_collector():
     """
     print "stats.new_collector!"
     global collector
-    args = new_collector_dict()
     if collector is not None:
         history.append(collector)
+    args = new_collector_dict()
     collector = utils.Struct(**args)
     return collector
 

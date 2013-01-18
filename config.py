@@ -3,14 +3,16 @@ import utils
 frac_edges = 0.1
 frac_damage = 0.65
 factor_reuse = 0.25
-policy_id = 'pro_poor'
+policy_id = 'passive'
 init_num_nodes = 0 # set by set_g
-max_iterations = 25
+max_iterations = 1
 treshold_kill = 0.2
-#mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\" # CHANGE ME!
-mypath = "C:\\soa\\" 
+mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\" # CHANGE ME!
+#mypath = "C:\\soa\\" 
+#stats_filename = mypath +"stats_"+policy_id+".csv" 
 stats_filename = mypath +"stats.csv" 
 runs_per_series = 10
+
 
 _g = None
 gephi = None

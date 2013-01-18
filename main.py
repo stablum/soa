@@ -32,14 +32,16 @@ def iteration(): # what happens in each cycle. Main calls happen here.
 
 def termination_condition3():
     if gi.num_alive_edges() <= 0:
-        print "termination_condition3 has been met!"
+        print("all edges have been killed! THE END!")
+
         return True
     return False
 
 def termination_condition():
     global count_iterations
     if count_iterations >= config.max_iterations:
-        print "termination_condition has been met!"
+        print("max number iterations reached.")
+
         return True
     return False
 

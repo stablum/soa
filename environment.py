@@ -15,7 +15,7 @@ def compute_edges():
         The weights of the edges will be reduced
         of a certain percentage
     """
-    num_edges_selected = int(math.ceil(gi.num_edges() * config.frac_edges ))
+    num_edges_selected = int(math.ceil(gi.num_alive_edges() * config.frac_edges ))
     selected=gi.random_edges(num_edges_selected)
     damaged = set()
     thisdamage=[]

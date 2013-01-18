@@ -61,9 +61,11 @@ def simulation_run():
     initialize_run()
     while not (termination_condition() or termination_condition3()):
         iteration()
+        break #FIXME DELME
     end_run()
 
 def series(gephi_stuff): # the Highest function (hehe)
+    print "series!"
     config.set_g(gephi_stuff['g'])
     config.set_gephi(gephi_stuff)
     gi.save_weights()
@@ -71,4 +73,5 @@ def series(gephi_stuff): # the Highest function (hehe)
         stats.run_num = run_num
         simulation_run()
         stats.write_history()
+        return #FIXME DELME
 

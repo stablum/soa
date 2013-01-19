@@ -92,7 +92,7 @@ def write_history():
     
     for c in history: #+c.run_num DELETED
         f.write(",".join([
-            str(x) 
+            str(x).replace(',',';')
             for x 
             in [
                 c.count_iterations,

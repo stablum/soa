@@ -51,6 +51,7 @@ def initialize_run():
     """
     global count_iterations
     count_iterations = 0
+    stats.collector = None
     stats.new_collector()
     gi.save_weights()
 

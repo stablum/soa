@@ -24,7 +24,12 @@ def run(nodes,edges):
     
     # fill matrix with intial edge weights
     for e in edges:
-        dist[e.source][e.target] = 1.0 / gi.get_weight(e)
+        # shorter in our case means with stronger connections, hence:
+        d = 1.0 / gi.get_weight(e)
+        
+        # inizialization of v->u and u->v to same value because the graph is undirected
+        dist[e.source][e.target] = d
+        dist[e.target][e.source] = d
     
     # the core of the algorithm
     for v1 in nodes:

@@ -3,7 +3,7 @@ import utils
 from org.gephi.statistics.plugin import GraphDistance
 import gi
 import config
-import shorpath
+import floyd_warshall
 import main
 import os
 
@@ -50,7 +50,12 @@ def total_weight():
     return ret
 
 def path_length():
-    return shorpath.getpl()
+    """
+    average path length
+    """
+    dist = floyd_warshall.run(gi.nodes(),gi.edges())
+    ret = floyd_warshall.avg(dist)
+    return ret
 
 def snapshot():
     """ statistics and stuff (??) """

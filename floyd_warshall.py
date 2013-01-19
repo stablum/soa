@@ -24,7 +24,7 @@ def run(nodes,edges):
     
     # fill matrix with intial edge weights
     for e in edges:
-        dist[e.source][e.target] = gi.get_weight(e)
+        dist[e.source][e.target] = 1.0 / gi.get_weight(e)
     
     # the core of the algorithm
     for v1 in nodes:

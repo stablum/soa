@@ -89,7 +89,6 @@ def random_edges(how_many,only_alive=True): # FIXME: more elegant than parametri
     """ 
     returns some edges, randomly selected
     """
-    how_many = min(how_many,num_alive_edges())
     pool = None
     if only_alive:
         pool = alive_edges()

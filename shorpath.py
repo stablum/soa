@@ -1,20 +1,5 @@
 import gi
-
-def harmean(a):
-    
-    # removing values 0 in the list 'a'
-    a_filt = filter(lambda x: x != 0, a)
-    
-    a_no_inf = [ 99999 if x > 99999 else x for x in a_filt ]
-
-    # calculating harmonic mean
-    s = sum([1.0 /x for x in a_no_inf])
-    
-    if s == 0:
-        raise Exception("harmean: sum is 0; a="+str(a)+",a_filt="+str(a_filt)+",a_no_inf="+str(a_no_inf))
-    
-    hm = float(len(a)) / float(s)
-    return hm
+import utils
 
 def allsp(start):
     # initialize distances and predecessor edges
@@ -49,9 +34,9 @@ def getpl():
     allhm,allhminv,hm,hminv=[],[],[],[]
     for s in gi.nodes():
         [d,dinv,dist,distinv]=allsp(s)
-        allhm.append(harmean(d))
-        allhminv.append(harmean(dinv))
-    hm=float(harmean(allhm)) # distance with the real weights (high means good)
-    hminv=harmean(allhminv) 
+        allhm.append(utils.harmean(d))
+        allhminv.append(utils.harmean(dinv))
+    hm=float(utils.harmean(allhm)) # distance with the real weights (high means good)
+    hminv=utils.harmean(allhminv) 
     return hminv
 

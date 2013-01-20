@@ -62,7 +62,6 @@ def avg(dist):
 
     # from matrix to list
     tmp = list_dist(dist)
-    count = float(len(tmp)) - len(dist) # removing the identity elements (dist[v][v])
-    filtered = filter(lambda x: x > 0 and x < float('Inf'), tmp)
-    return sum(filtered) / count
+    filtered = filter(lambda x: x > 0.0 and x < float('Inf'), tmp)
+    return utils.harmean(filtered)
 

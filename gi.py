@@ -114,7 +114,7 @@ def set_weight(e,weight):
     e.getEdge().getEdgeData().setWeight(weight)
 
 def get_weight(e):
-    return e.weight
+    return float(e.weight)
 
 def mult_weight(e, factor):
     set_weight(e, get_weight(e) * factor)

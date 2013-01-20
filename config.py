@@ -3,9 +3,9 @@ import utils
 frac_edges = 0.1
 frac_damage = 0.65
 factor_reuse = 0.25
-policy_id = 'simple'
+policy_id = 'pro_poor'
 init_num_nodes = 0 # set by set_g
-max_iterations = 3
+max_iterations = 260
 treshold_kill = 0.2
 mypath = "D:\\ELECTIVES\\SELF_ORGA\\new_code\\" # CHANGE ME!
 #mypath = "C:\\soa\\" 

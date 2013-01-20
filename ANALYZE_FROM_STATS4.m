@@ -87,9 +87,9 @@ end
 %% make cumulative of killed edges x cycle
 
 figure(6); hold on;
-p1=plot(steps,cumsum(pol(npol).n_kill.avg),'color',cols(npol,:)); hold on;
-p2=plot(steps,(pol(npol).n_kill.p25),'--','color',cols(npol,:)); hold on;
-p3=plot(steps,cumsum(pol(npol).n_kill.p75),'--','color',cols(npol,:)); hold on;  
+p1=plot(steps,cumsum(pol(npol).n_kill.avg),'color',mycols(npol,:)); hold on;
+p2=plot(steps,(pol(npol).n_kill.p25),'--','color',mycols(npol,:)); hold on;
+p3=plot(steps,cumsum(pol(npol).n_kill.p75),'--','color',mycols(npol,:)); hold on;  
 title('cumulative number of dead edges over cycles')
 ylabel('cumulative number of dead edges '); xlabel('cycles');legend([p1,p2,p3],'mean','pile25','pile75')
 
@@ -109,10 +109,10 @@ figure; plot(steps,pol(npol).n_kill.avg); hold on; plot(steps,flatk,'r');
 [flatmi]=checkflat(pol(npol).mean_imp.avg);
 figure; plot(steps,pol(npol).mean_imp.avg); hold on; plot(steps,flatmi,'r');
 
-cols=winter(5);
-figure; p1=plot(steps,flatw./max(flatw),'color',cols(1,:));hold on; p2=plot(steps,flatpl./max(flatpl),'color',cols(2,:));hold on; 
-p3=plot(steps,flatsti./max(flatsti),'color',cols(3,:));hold on;
-p4=plot(steps,flatk./max(flatk),'color',cols(4,:));hold on; p5=plot(steps,flatmi./max(flatmi),'color',cols(5,:));
+mycols=winter(5);
+figure; p1=plot(steps,flatw./max(flatw),'color',mycols(1,:));hold on; p2=plot(steps,flatpl./max(flatpl),'color',mycols(2,:));hold on; 
+p3=plot(steps,flatsti./max(flatsti),'color',mycols(3,:));hold on;
+p4=plot(steps,flatk./max(flatk),'color',mycols(4,:));hold on; p5=plot(steps,flatmi./max(flatmi),'color',mycols(5,:));
 legend([p1,p2,p3,p4,p5],'total weight','path length','std dev importance','num killed', 'mean importance')
 title('where it is interesting to do a fit?');
 
@@ -186,16 +186,16 @@ plot([1,1,1],[a0 a2],'color',cols(npol,:),')
 %% a detailed graph
 
 npol=2
-cols=[0,0,1; 1,0,0; 0,0,0];
+mycols=[0,0,1; 1,0,0; 0,0,0];
 
 figure(1);
-b1=plot(steps,pol(1).p_l.avg,'color',cols(1,:)); hold on;
-b2=plot(steps,pol(1).p_l.p25,'--','color',cols(1,:)); hold on;
-b3=plot(steps,pol(1).p_l.p75,'--','color',cols(1,:)); hold on; 
+b1=plot(steps,pol(1).p_l.avg,'color',mycols(1,:)); hold on;
+b2=plot(steps,pol(1).p_l.p25,'--','color',mycols(1,:)); hold on;
+b3=plot(steps,pol(1).p_l.p75,'--','color',mycols(1,:)); hold on; 
 
-r1=plot(steps,pol(2).p_l.avg,'color',cols(2,:)); hold on;
-r2=plot(steps,pol(2).p_l.p25,'--','color',cols(2,:)); hold on;
-r3=plot(steps,pol(2).p_l.p75,'--','color',cols(2,:)); hold on; 
+r1=plot(steps,pol(2).p_l.avg,'color',mycols(2,:)); hold on;
+r2=plot(steps,pol(2).p_l.p25,'--','color',mycols(2,:)); hold on;
+r3=plot(steps,pol(2).p_l.p75,'--','color',mycols(2,:)); hold on; 
 title('path length over cycles')
 ylabel('path length'); xlabel('cycles');legend([b1,b2,b3],'mean','pile25','pile75');
 legend([b1,r1],'pro poor','pro rich')

@@ -12,7 +12,7 @@ def init_dist(nodes):
             dist[v][v2] = float('Inf')
     return dist
 
-def run(nodes,alive_edges):
+def run(nodes,edges):
     """
     execute the Floyd Warshall algorithm
     """
@@ -23,16 +23,20 @@ def run(nodes,alive_edges):
         dist[v][v] = 0
     
     # fill matrix with intial edge weights
-    for e in alive_edges:
+    for e in edges
         # shorter in our case means with stronger connections, hence:
         
-        myw=gi.get_weight(e)
-        if myw!=0:
-            d = 1.0 / myw
-            # inizialization of v->u and u->v to same value because the graph is undirected
-            dist[e.source][e.target] = d
-            dist[e.target][e.source] = d
-    
+        w = gi.get_weight(e)
+        if w > 0:
+            d = 1.0 / w
+        else:
+            d = 99999 # "Inf"
+
+        # inizialization of v->u and u->v to same value because the graph is undirected
+        dist[e.source][e.target] = d
+        dist[e.target][e.source] = d
+            
+
     # the core of the algorithm
     for v1 in nodes:
         for v2 in nodes:

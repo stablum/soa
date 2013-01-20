@@ -53,7 +53,7 @@ def path_length():
     """
     average path length
     """
-    dist = floyd_warshall.run(gi.nodes(),gi.alive_edges())
+    dist = floyd_warshall.run(gi.nodes(),gi.edges())
     ret = floyd_warshall.avg(dist)
     return ret
 

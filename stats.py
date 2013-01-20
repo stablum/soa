@@ -4,7 +4,6 @@ from org.gephi.statistics.plugin import GraphDistance
 import gi
 import config
 import floyd_warshall
-import shorpath
 import main
 import os
 
@@ -54,8 +53,8 @@ def path_length():
     """
     average path length
     """
-    dist = floyd_warshall.run(gi.nodes(),gi.edges())
-    ret = ( floyd_warshall.avg(dist), shorpath.getpl() )
+    dist = floyd_warshall.run(gi.nodes(),gi.alive_edges())
+    ret = floyd_warshall.avg(dist)
     return ret
 
 def snapshot():

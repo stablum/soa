@@ -23,7 +23,7 @@ def run(nodes,edges):
         dist[v][v] = 0
     
     # fill matrix with intial edge weights
-    for e in edges
+    for e in edges:
         # shorter in our case means with stronger connections, hence:
         
         w = gi.get_weight(e)
